@@ -13,11 +13,11 @@ class JupyterHyperModelCallback(ParseTrailEventCallback):
     def set_dom_widget(self, dom_widget):
         self.dom_widget = dom_widget
 
-    def is_ready(self):
+    def assert_ready(self):
         return super(JupyterHyperModelCallback, self).is_ready() and self.dom_widget is not None
 
     def send_action(self, action_type, payload):
-        assert self.is_ready()
+        assert self.assert_ready()
         event_dict = {
             'type': action_type,
             'data': payload
