@@ -68,7 +68,7 @@ const getNewTrialData = (trialNoIndex, isLatest) => {
     }
 
     return {
-        type: 'trialFinished',
+        type: ActionType.TrialEnd,
         payload: {
             stepIndex: 0,
             data: {
@@ -136,7 +136,7 @@ export function sendFinishData(store, delay = 1000) {
     setTimeout(function () {
         store.dispatch(
             {
-                type: 'stepFinished',
+                type: ActionType.StepEnd,
                 payload: {
                     index: 0,
                     extension: {

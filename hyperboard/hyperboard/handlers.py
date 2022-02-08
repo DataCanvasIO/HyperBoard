@@ -4,9 +4,11 @@ import sys
 from pathlib import Path
 from typing import Optional, Awaitable
 
+from os import path as P
+
 import tornado.websocket
 from tornado.log import app_log
-from tornado.web import Finish, HTTPError
+from tornado.web import Finish, HTTPError, StaticFileHandler
 
 
 class RestResult(object):
@@ -69,14 +71,14 @@ class IndexHandler(BaseHandler):
         super().__init__(a, b, **c)
 
     def get(self, *args, **kwargs):
+
         self.finish("It's worked")
 
 
 class EventsHandler(BaseHandler):
 
     def get_event_file(self):
-        from hypernets.board.app import WebApp
-        app: WebApp = self.application
+        app = self.application
         log_file_exp = Path(app.event_file).absolute()
         return log_file_exp
 
@@ -88,3 +90,23 @@ class EventsHandler(BaseHandler):
         events_dict = [json.loads(event_txt) for event_txt in events_txt]
         selected_events = events_dict[event_begin:]
         self.response({"events": selected_events})
+
+
+class AssetsHandler(StaticFileHandler):
+
+    MissingResource = ['favicon.ico']
+
+    async def get(self, path, **kwargs):
+
+        if path in self.MissingResource:
+            raise tornado.web.HTTPError(404, f"File {path} is missing")
+
+        if path in ['', '/']:
+            resource_path = "index.html"
+        else:
+            absolute_path = self.get_absolute_path(self.root, self.parse_url_path(path))
+            if not P.exists(absolute_path):
+                resource_path = "index.html"  # handle 404
+            else:
+                resource_path = path
+        await super(AssetsHandler, self).get(resource_path)

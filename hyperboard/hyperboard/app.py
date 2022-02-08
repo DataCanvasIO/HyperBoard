@@ -5,8 +5,9 @@ import asyncio
 import tornado.ioloop
 import tornado.web
 
-from hypernets.board.handlers import IndexHandler, EventsHandler
+from hyperboard.handlers import IndexHandler, EventsHandler, AssetsHandler
 from hypernets.utils import logging
+from os import path as P
 
 logger = logging.get_logger(__name__)
 
@@ -14,11 +15,13 @@ logger = logging.get_logger(__name__)
 class WebApp(tornado.web.Application):
 
     def __init__(self, event_file, server_port=8888):
+
         self.event_file = event_file
         self.server_port = server_port
+        static_path = P.join(P.dirname(P.abspath(__file__)), 'assets')
         handlers = [
-            (r'', IndexHandler),
             (r'/api/events', EventsHandler),
+            (r'/(.*?)$', AssetsHandler, {"path": static_path}),
         ]
         super(WebApp, self).__init__(handlers)
 
@@ -39,8 +42,3 @@ class WebAppRunner(threading.Thread):
     def run(self) -> None:
         self.webapp.start()
 
-
-if __name__ == '__main__':
-    logfile = "C:/Users/wuhf/PycharmProjects/HyperGBM/hypergbm/tests/log/exp_0125-134648/events_1709647716232.json"
-    webapp_ = WebApp(logfile)
-    webapp_.start()

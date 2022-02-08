@@ -143,6 +143,11 @@ dask-worker-space/
 
 # widget
 hypernets/hn_widget/js/lib/experimentVis.js
+hypernets/hn_widget/js/lib/experimentVis.js
+
+hyperboard/hyperboard/assets/**
+hyperboard/hyperboard/assets/
+hyperboard/js/yarn.lock
 
 # js
 **/node_modules

@@ -2,7 +2,7 @@
   "name": "hypernets-experiment",
   "version": "0.2.1",
   "private": true,
-  "main": "build/experimentVis.js",
+  "main": "src/index.js",
   "files": [
     "build",
     "!~"
