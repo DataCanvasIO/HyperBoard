@@ -1,11 +1,11 @@
-graft hn_widget/nbextension
-graft hn_widget/labextension
+graft experiment_notebook_widget/nbextension
+graft experiment_notebook_widget/labextension
 
 graft js
 graft tests
 prune **/node_modules
 
-include hn_widget.json
+include experiment_notebook_widget.json
 
 include LICENSE
 include setup.py

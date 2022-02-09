@@ -1,4 +1,4 @@
-- To release a new version of hn_widget on PyPI:
+- To release a new version of experiment_notebook_widget on PyPI:
 
 Update _version.py (set release version, remove 'dev')
 git add the _version.py file and git commit
@@ -10,7 +10,7 @@ git add and git commit
 git push
 git push --tags
 
-- To release a new version of hn_widget on NPM:
+- To release a new version of experiment_notebook_widget on NPM:
 
 Update `js/package.json` with new npm package version
 

@@ -21,14 +21,16 @@ def append_event_to_file(event_file, action_type, payload):
         "type": action_type,
         "payload": payload
     }
-    with fs.open(event_file, 'a', newline='\n') as f:
+    # fs.open
+    with open(event_file, 'a', newline='\n') as f:
         f.write(json.dumps(event_dict))
         f.write('\n')
 
 
 class LogEventExperimentCallback(ABSExperimentVisCallback):
 
-    def __init__(self, log_dir=None, server_port=8888):
+    def __init__(self, hyper_model_callback_cls, log_dir=None, server_port=8888):
+        super(LogEventExperimentCallback, self).__init__(hyper_model_callback_cls)
         self.log_dir = self._prepare_output_file(log_dir)
         self.server_port = server_port
         self._log_mapping = {}
@@ -52,15 +54,18 @@ class LogEventExperimentCallback(ABSExperimentVisCallback):
         return logfile
 
     def add_exp_log(self, exp):
-        logfile = (Path(self.log_dir) / f"events_{id(exp)}.json").absolute().as_posix()
+        logfile_path = Path(self.log_dir) / f"events_{id(exp)}.json"
+        if not logfile_path.parent.exists():
+            os.makedirs(logfile_path.parent, exist_ok=True)
+        logfile = logfile_path.absolute().as_posix()
         self._log_mapping[exp] = logfile
         return logfile
 
     def remove_exp_log(self, exp):
         del self._log_mapping[exp]
 
-    def setup_hypermodel_callback(self, exp, step_index):
-        super().setup_hypermodel_callback(exp, step_index)
+    def setup_hyper_model_callback(self, exp, step_index):
+        super().setup_hyper_model_callback(exp, step_index)
 
         callback = self._find_hyper_model_callback(exp)
         assert callback
@@ -71,14 +76,18 @@ class LogEventExperimentCallback(ABSExperimentVisCallback):
         logfile = self.get_log_file(exp)
         append_event_to_file(logfile, action_type, payload)
 
+    def experiment_start(self, exp):
+        self.add_exp_log(exp)
+        super(LogEventExperimentCallback, self).experiment_start(exp)
+
     def experiment_start_(self, exp, experiment_data: ExperimentMeta):
-        logfile = self.add_exp_log(exp)
         # logger.info(f"for experiment {id(exp)} add event file {logfile} ")
-        self.append_event(exp, ActionType.ExperimentStart, experiment_data.to_dict())
+        logfile = self.get_log_file(exp)
         webapp = WebApp(event_file=logfile,
                         server_port=self.server_port)
         runner = WebAppRunner(webapp)
         runner.start()
+        self.append_event(exp, ActionType.ExperimentStart, experiment_data.to_dict())
 
     def step_start_(self, exp, step_name, d):
         self.append_event(exp, ActionType.StepStart, d)
@@ -95,10 +104,4 @@ class LogEventExperimentCallback(ABSExperimentVisCallback):
 
     def experiment_break(self, exp, error):
         self.remove_exp_log(exp)
-
-    @classmethod
-    @abc.abstractmethod
-    def hypermodel_callback_cls(cls):
-        raise NotImplemented
-
 

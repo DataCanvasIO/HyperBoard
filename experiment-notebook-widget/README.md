@@ -1,4 +1,4 @@
-hn_widget
+experiment_notebook_widget
 ===============================
 
 Jupyter widgets for hyperntes
@@ -12,15 +12,15 @@ To install use pip:
 
 For a development installation (requires [Node.js](https://nodejs.org) and [Yarn version](https://classic.yarnpkg.com/)),
 
-    $ git clone https://github.com/DataCanvas/hn_widget.git
-    $ cd hn_widget
+    $ git clone https://github.com/DataCanvas/experiment_notebook_widget.git
+    $ cd experiment_notebook_widget
     $ pip install -e .
-    $ jupyter nbextension install --py --symlink --overwrite --sys-prefix hn_widget
-    $ jupyter nbextension enable --py --sys-prefix hn_widget
+    $ jupyter nbextension install --py --symlink --overwrite --sys-prefix experiment_notebook_widget
+    $ jupyter nbextension enable --py --sys-prefix experiment_notebook_widget
 
 When actively developing your extension for JupyterLab, run the command:
 
-    $ jupyter labextension develop --overwrite hn_widget
+    $ jupyter labextension develop --overwrite experiment_notebook_widget
 
 Then you need to rebuild the JS when you make a code change:
 

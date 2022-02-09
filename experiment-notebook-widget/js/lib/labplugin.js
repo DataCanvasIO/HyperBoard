@@ -2,11 +2,11 @@ var plugin = require('./index');
 var base = require('@jupyter-widgets/base');
 
 module.exports = {
-  id: 'hn_widget:plugin',
+  id: 'experiment_notebook_widget:plugin',
   requires: [base.IJupyterWidgetRegistry],
   activate: function(app, widgets) {
       widgets.registerWidget({
-          name: 'hn_widget',
+          name: 'experiment_notebook_widget',
           version: plugin.version,
           exports: plugin
       });

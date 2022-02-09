@@ -6,8 +6,8 @@ build/
 node_modules/
 
 # Compiled javascript
-hn_widget/nbextension/
-hn_widget/labextension/
+experiment_notebook_widget/nbextension/
+experiment_notebook_widget/labextension/
 
 # OS X
 .DS_Store

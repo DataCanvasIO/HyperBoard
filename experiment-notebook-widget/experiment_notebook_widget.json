@@ -1,0 +1,5 @@
+{
+  "load_extensions": {
+    "experiment_notebook_widget/extension": true
+  }
+}

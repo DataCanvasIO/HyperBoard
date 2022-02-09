@@ -21,11 +21,11 @@ log.info('setup.py entered')
 log.info('$PATH=%s' % os.environ['PATH'])
 
 name = 'hypernets-jupyter-widget'
-pkg_name = 'hn_widget'
+pkg_name = 'experiment_notebook_widget'
 
 LONG_DESCRIPTION = 'Jupyter widgets for hyperntes'
 
-# Get hn_widget version
+# Get experiment_notebook_widget version
 version = get_version(pjoin(pkg_name, '_version.py'))
 
 js_dir = pjoin(here, 'js')
@@ -36,10 +36,10 @@ jstargets = [
 ]
 
 data_files_spec = [
-    ('share/jupyter/nbextensions/hn_widget', 'hn_widget/nbextension', '*.*'),
-    ('share/jupyter/labextensions/hn_widget', 'hn_widget/labextension', '**'),
-    ('share/jupyter/labextensions/hn_widget', '.', 'install.json'),
-    ('etc/jupyter/nbconfig/notebook.d', '.', 'hn_widget.json'),
+    ('share/jupyter/nbextensions/experiment_notebook_widget', 'experiment_notebook_widget/nbextension', '*.*'),
+    ('share/jupyter/labextensions/experiment_notebook_widget', 'experiment_notebook_widget/labextension', '**'),
+    ('share/jupyter/labextensions/experiment_notebook_widget', '.', 'install.json'),
+    ('etc/jupyter/nbconfig/notebook.d', '.', 'experiment_notebook_widget.json'),
 ]
 
 cmdclass = create_cmdclass('jsdeps', data_files_spec=data_files_spec)
@@ -65,7 +65,7 @@ setup_args = dict(
     cmdclass=cmdclass,
     author='wuhf',
     author_email='wuhf@zetyun.com',
-    url='https://github.com/DataCanvas/hn_widget',
+    url='https://github.com/DataCanvas/experiment_notebook_widget',
     keywords=[
         'ipython',
         'jupyter',
