@@ -22,12 +22,21 @@ class WebApp(tornado.web.Application):
         ]
         super(WebApp, self).__init__(handlers)
 
+        self.http_server_ = None
+        self.ioloop_ = None
+
     def start(self):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        self.listen(self.server_port)
+        self.http_server_ = self.listen(self.server_port)
         print(f"server is running at: 0.0.0.0:{self.server_port} ")
-        tornado.ioloop.IOLoop.instance().start()
+        self.ioloop_ = tornado.ioloop.IOLoop.instance()
+        self.ioloop_.start()
+
+    def stop(self):
+        # exit the thread
+        self.http_server_.stop()
+        self.ioloop_.add_callback(self.ioloop_.stop)
 
 
 class WebAppRunner(threading.Thread):
@@ -39,3 +48,5 @@ class WebAppRunner(threading.Thread):
     def run(self) -> None:
         self.webapp.start()
 
+    def stop(self):
+        self.webapp.stop()

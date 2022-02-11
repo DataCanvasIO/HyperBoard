@@ -71,7 +71,6 @@ class IndexHandler(BaseHandler):
         super().__init__(a, b, **c)
 
     def get(self, *args, **kwargs):
-
         self.finish("It's worked")
 
 
