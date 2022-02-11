@@ -11,7 +11,7 @@ MIN_PYTHON_VERSION = '>=3.6.*'
 description = 'Hypernets experiment visualization',
 
 setup(
-    name='hyperboard',
+    name='experiment-visualization',
     version='0.1.0',
     description=description,
     long_description=description,
