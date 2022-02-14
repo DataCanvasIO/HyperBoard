@@ -46,6 +46,4 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     packages=find_packages(exclude=('docs', 'tests*')),
-    entry_points={
-    }
 )
