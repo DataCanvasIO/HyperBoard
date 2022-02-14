@@ -38,4 +38,5 @@ jobs:
         pip list
     - name: Test with pytest
       run: |
+        cd ./experiment-visualization
         pytest --cov=experiment_visualization --durations=30
