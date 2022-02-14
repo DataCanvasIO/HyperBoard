@@ -57,7 +57,6 @@ setup_args = dict(
         'ipywidgets>=7.6.0',
         'numpy',
         'hypernets',
-        'hypergbm',
         'pandas'
     ],
     packages=find_packages(),
