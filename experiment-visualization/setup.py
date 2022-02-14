@@ -14,8 +14,6 @@ setup(
     name='experiment-visualization',
     version='0.1.0',
     description=description,
-    long_description=description,
-    long_description_content_type="text/markdown",
     url='https://github.com/DataCanvasIO/HyperBoard',
     author='DataCanvas Community',
     author_email='wuhf@zetyun.com',
