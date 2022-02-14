@@ -27,7 +27,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     package_data={
-        'hyperboard': ['assets/*', 'assets/static/*'],  # can not inlcude a directory recursion
+        'experiment_visualization': ['assets/*', 'assets/static/*'],  # can not inlcude a directory recursion
     },
     python_requires=MIN_PYTHON_VERSION,
     classifiers=[
@@ -47,8 +47,5 @@ setup(
     ],
     packages=find_packages(exclude=('docs', 'tests*')),
     entry_points={
-        'console_scripts': [
-            'hyperctl = hypernets.hyperctl.daemon:main',
-        ]
     }
 )
