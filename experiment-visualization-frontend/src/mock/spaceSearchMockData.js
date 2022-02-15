@@ -6,11 +6,33 @@ const N_FOLDS = 3;
 export function getInitData() {
 
     return {
-        status: "init", // 
+        status: "running", //
         steps: [
             {
-                "name": Steps.SpaceSearch.name,
+                "name": 'DataAdaptionStep',
                 "index": 0,
+                "type": 'DataAdaptionStep',
+                "status": StepStatus.Wait,
+                "configuration": {
+                    "cv": true,
+                    "name": "space_searching",
+                    "num_folds": 3,
+                    "earlyStopping": {
+                        "enable": false,
+                        "exceptedReward": 1,
+                        "maxNoImprovedTrials": 10,
+                        "timeLimit": 60000,
+                        "mode": "max"
+                    }
+                },
+                "extension": {
+                },
+                "start_datetime": 1629184489.0386312,
+                "end_datetime": null
+            },
+            {
+                "name": Steps.SpaceSearch.name,
+                "index": 1,
                 "type": Steps.SpaceSearch.type,
                 "status": StepStatus.Wait,
                 "configuration": {
@@ -70,8 +92,8 @@ const getNewTrialData = (trialNoIndex, isLatest) => {
     return {
         type: ActionType.TrialEnd,
         payload: {
-            stepIndex: 0,
-            data: {
+            stepIndex: 1,
+            trialData: {
                 trialNo: trialNoIndex,
                 maxTrials: 6,
                 hyperParams: {
@@ -119,7 +141,7 @@ export function sendFinishData(store, delay = 1000) {
             {
                 type: ActionType.EarlyStopped,
                 payload: {
-                    stepIndex: 0,
+                    stepIndex: 1,
                     data:{
                         bestReward: 0.9,
                         bestTrialNo: 1,
@@ -138,7 +160,7 @@ export function sendFinishData(store, delay = 1000) {
             {
                 type: ActionType.StepEnd,
                 payload: {
-                    index: 0,
+                    index: 1,
                     extension: {
                         input_features: [{"name": "age"}, {"name": "data"}],
                         features: {

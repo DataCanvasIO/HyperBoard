@@ -1,18 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ExperimentSummary } from './pages/experimentSummary'
-import constants from "./constants";
-import { prepareExperimentData } from "./components/prepare";
 import { Dataset } from './pages/dataset'
 import { ExperimentUIContainer, experimentReducer } from './pages/experimentRedux'
 import { getInitData, sendFinishData } from './mock/spaceSearchMockData.js'
-import { datasetMockData, datasetMockDataClassification } from './mock/plotDatasetMockData.js'
-import { experimentConfigMockData } from './mock/experimentConfigMockData'
 import { Provider } from "react-redux"
 import { createStore } from "redux"
 import { Result } from 'antd'
-
-
 
 export function renderDatasetSummary(data, domElement){
     ReactDOM.render(
@@ -50,10 +44,13 @@ export function renderLossState(domElement) {
         domElement
     );
 }
-export {ActionType, StepStatus, Steps} from "./constants";
+
+export { ActionType, StepStatus, Steps } from "./constants";
 export { experimentReducer } from './pages/experimentRedux'
+
 // ----------------------------Test Experiment UI----------------------------------------
-// const store = renderExperimentProcess(getInitData(), document.getElementById('root'));
+// const initData = getInitData();
+// const store = renderExperimentProcess(initData, document.getElementById('root'));
 // sendFinishData(store);
 // --------------------------------------------------------------------------------------
 

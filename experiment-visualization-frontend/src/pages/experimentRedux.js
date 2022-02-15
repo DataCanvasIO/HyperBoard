@@ -133,18 +133,6 @@ function mapDispatchToProps(dispatch) {
     return {dispatch}
 }
 
-function getRunningSpaceSearchStepIndex(experimentConfig){
-    // TODO: not init
-    for(const step of experimentConfig.steps){
-        if(step.type === Steps.SpaceSearch.type){
-            if(step.status === StepStatus.Process){
-                return  step.index
-            }
-        }
-    }
-    return -1
-}
-
 // Reducer: Transform action to new state
 export function experimentReducer(state, action) {
     const requestId = Math.random() * 10000;
@@ -173,16 +161,8 @@ export function experimentReducer(state, action) {
         const { stepIndex } = payload;
         newState  = handleAction(state, action, stepIndex, handleFeatureImportanceChange, type);
     } else if (type === ActionType.TrialEnd) {
-        const stepIndex = getRunningSpaceSearchStepIndex(state);
-        const { modelInstanceId } = payload;
-        if(stepIndex !== -1){
-            log.debug("found step index " + stepIndex + " for model instance id " + modelInstanceId);
-            newState  = handleAction(state, action, stepIndex, handleTrailFinish, type);
-        }else{
-            log.error("do not match trial to step, payload:");
-            log.error(payload)
-            newState = {...state}
-        }
+        const { stepIndex } = payload;
+        newState  = handleAction(state, action, stepIndex, handleTrailFinish, type);
     } else if (type === ActionType.EarlyStopped) {
         const { stepIndex } = payload;
         newState  = handleAction(state, action, stepIndex, handleEarlyStopped, type);

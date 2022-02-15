@@ -1,33 +1,38 @@
-// Append display name to experimentData, the name only required by frontend
 import {Steps, TWO_STAGE_SUFFIX} from "../constants";
 import {getStepComponent} from "./steps";
-import {isEmpty, notEmpty} from "../util";
 
 
 export function prepareExperimentData(experimentData) {
-    const steps = {...experimentData}.steps; // must clone a copy to avoid modify origin data
-    const stepsCounter = {};
-    const add = (counter, key) => {
-        const v = counter[key];
-        if(v === undefined || v === null){
-            counter[key] = 1
+    const retExperimentData = {...experimentData}; // must clone a copy to avoid modify origin data
+    // exclude steps that does not support to visualize
+    // const supportedSteps = steps.filter(step => getStepComponent(step.type) !== null)
+    const supportedSteps = []
+    for (const stepData of retExperimentData.steps){
+        const stepType = stepData.type;
+        if(getStepComponent(stepType) !== null){
+            supportedSteps.push(stepData);
         }else{
-            counter[key] = v + 1;
+            console.debug("Unseen step type: " + stepType);
+        }
+    }
+
+    const stepsCounter = {};
+
+    const accumulate = (key) => {
+        const v = stepsCounter[key];
+        if(v === undefined || v === null){
+            stepsCounter[key] = 1
+        }else{
+            stepsCounter[key] = v + 1;
         }
     };
 
-    for(const stepData of steps){
+    for(const stepData of supportedSteps){
         const stepType = stepData.type;
         // 1. find meta data
         const CompCls = getStepComponent(stepType);
-        if(isEmpty(CompCls)){
-            console.error("Unseen step type: " + stepType);
-            return null;
-        }
-
         const displayName = CompCls.getDisplayName();
-
-        add(stepsCounter, stepType);
+        accumulate(stepType);
         const stepCount = stepsCounter[stepType];
 
         // 2. get step ui title
@@ -37,9 +42,10 @@ export function prepareExperimentData(experimentData) {
         } else {
             stepTitle = displayName;
         }
-
         stepData['displayName'] = stepTitle;
     }
 
-    return experimentData;
+    retExperimentData.steps = supportedSteps;
+
+    return retExperimentData;
 }
