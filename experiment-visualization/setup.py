@@ -44,4 +44,9 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     packages=find_packages(exclude=('docs', 'tests*')),
+    entry_points={
+        'console_scripts': [
+            'hyperboard = experiment_visualization.cli:main',
+        ]
+    },
 )
