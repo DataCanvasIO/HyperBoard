@@ -1,30 +1,31 @@
-experiment_notebook_widget
-===============================
+# experiment-notebook-widget
 
-Jupyter widgets for hyperntes
+This widget is used to visualize the running the hypernets experiment in jupyter notebook or jupyterlab.
 
-Installation
-------------
+## build from source code
 
-To install use pip:
+`hypernets jupyter widget` relies on `hypernets experiment`,  to build the software environment required by the project:
 
-    $ pip install hypernets-jupyter-widget
+- [python 3.7+](https://python.org)
+- [nodejs v14.15.0+](https://nodejs.org/en/)
+- [pip 20.0.2+](https://pypi.org/project/pip/)
+- [jupyterlab 2.0.0+ ](https://jupyter.org/) (if you're using jupyterlab)
 
-For a development installation (requires [Node.js](https://nodejs.org) and [Yarn version](https://classic.yarnpkg.com/)),
+Clone the repo:
 
-    $ git clone https://github.com/DataCanvas/experiment_notebook_widget.git
-    $ cd experiment_notebook_widget
-    $ pip install -e .
-    $ jupyter nbextension install --py --symlink --overwrite --sys-prefix experiment_notebook_widget
-    $ jupyter nbextension enable --py --sys-prefix experiment_notebook_widget
+```bash
+git clone https://github.com/DataCanvasIO/HyperBoard.git
+```
 
-When actively developing your extension for JupyterLab, run the command:
+Build React project `hypernets-experiment`:
 
-    $ jupyter labextension develop --overwrite experiment_notebook_widget
+```bash
+cd experiment-notebook-widget
+python setup.py install
+```
 
-Then you need to rebuild the JS when you make a code change:
-
-    $ cd js
-    $ yarn run build
-
-You then need to refresh the JupyterLab page when your javascript changes.
+Enable the widget:
+```bash
+jupyter nbextension install --py --symlink --sys-prefix hn_widget
+jupyter nbextension enable --py --sys-prefix hn_widget
+```

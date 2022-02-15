@@ -1,3 +1,5 @@
+# https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Custom.html
+
 from __future__ import print_function
 from setuptools import setup, find_packages
 import os
@@ -11,8 +13,6 @@ from jupyter_packaging import (
     combine_commands,
     get_version,
 )
-
-# https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Custom.html
 
 here = os.path.dirname(os.path.abspath(__file__))
 
@@ -50,26 +50,27 @@ cmdclass['jsdeps'] = combine_commands(
 setup_args = dict(
     name=name,
     version=version,
-    description='Jupyter widgets for hyperntes',
+    description=LONG_DESCRIPTION,
     long_description=LONG_DESCRIPTION,
-    include_package_data=True,
     install_requires=[
         'ipywidgets>=7.6.0',
         'numpy',
         'hypernets',
         'pandas'
     ],
+    setup_requires=['jupyter_packaging'],
     packages=find_packages(),
     zip_safe=False,
     cmdclass=cmdclass,
     author='wuhf',
     author_email='wuhf@zetyun.com',
-    url='https://github.com/DataCanvas/experiment_notebook_widget',
+    url='https://github.com/DataCanvasIO/HyperBoard.git',
     keywords=[
-        'ipython',
+        'hypernets',
         'jupyter',
         'widgets',
     ],
+    include_package_data=True,
     classifiers=[
         'Development Status :: 4 - Beta',
         'Framework :: IPython',
