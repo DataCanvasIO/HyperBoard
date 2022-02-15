@@ -1,7 +1,8 @@
 var widgets = require('@jupyter-widgets/base');
 var _ = require('lodash');
 
-var experimentVisLib = require('./experimentVis.js');
+var experimentVisLib = require("experiment-visualization-frontend");
+
 var hypernetsExperiment = experimentVisLib.experimentVis;
 
 var ExperimentSummaryModel = widgets.DOMWidgetModel.extend({

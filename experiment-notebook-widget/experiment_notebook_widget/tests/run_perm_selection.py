@@ -22,7 +22,7 @@ y_train = X_train.pop('y')
 y_test = X_test.pop('y')
 
 rs = RandomSearcher(search_space_general, optimize_direction=OptimizeDirection.Maximize)
-from hypergbm.callbacks import HyperGBMNotebookExperimentCallback, HyperGBMNotebookHyperModelCallback
+from hypergbm.experiment_callbacks import HyperGBMNotebookExperimentCallback, HyperGBMNotebookHyperModelCallback
 
 hk = HyperGBM(rs, task='binary', reward_metric='accuracy',
               cache_dir=f'{test_output_dir}/hypergbm_cache',
