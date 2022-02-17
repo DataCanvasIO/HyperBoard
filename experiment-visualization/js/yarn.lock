@@ -5081,7 +5081,7 @@ expect@^26.6.0, expect@^26.6.2:
     jest-message-util "^26.6.2"
     jest-regex-util "^26.0.0"
 
-"experiment-visualization@file:../../experiment-visualization":
+"experiment-visualization-frontend@file:../../experiment-visualization-frontend":
   version "0.2.1"
   dependencies:
     "@testing-library/jest-dom" "^5.11.4"

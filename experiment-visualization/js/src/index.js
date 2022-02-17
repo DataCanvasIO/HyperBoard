@@ -1,4 +1,4 @@
-import  { experimentVis }  from "experiment-visualization";
+import  { experimentVis }  from "experiment-visualization-frontend";
 import request from './request';
 
 const { renderDatasetSummary, experimentReducer, renderExperimentProcess, ActionType, StepStatus } = experimentVis;
