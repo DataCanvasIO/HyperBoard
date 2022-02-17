@@ -1,10 +1,11 @@
 import datetime
 import json
 import os
+from typing import Type
 from pathlib import Path
 
 from experiment_visualization.app import WebApp, WebAppRunner
-from hypernets.experiment import ABSExperimentVisCallback, ActionType
+from hypernets.experiment import ABSExpVisExperimentCallback, ActionType, ABSExpVisHyperModelCallback
 from hypernets.experiment import ExperimentMeta
 from hypernets.utils import logging as hyn_logging
 
@@ -22,13 +23,38 @@ def append_event_to_file(event_file, action_type, payload):
         f.write('\n')
 
 
-class LogEventExperimentCallback(ABSExperimentVisCallback):
+class WebVisHyperModelCallback(ABSExpVisHyperModelCallback):
+
+    def __init__(self):
+        super(WebVisHyperModelCallback, self).__init__()
+        # TODO: rename to event_file
+        self.log_file = None
+
+    def set_log_file(self, log_file):
+        self.log_file = log_file
+
+    def assert_ready(self):
+        super(WebVisHyperModelCallback, self).assert_ready()
+        assert self.log_file is not None
+
+
+
+class WebVisExperimentCallback(ABSExpVisExperimentCallback):
 
     _log_mapping = {}
     _webapp_mapping = {}
 
-    def __init__(self, hyper_model_callback_cls, log_dir=None, server_port=8888, exit_web_server_on_finish=False):
-        super(LogEventExperimentCallback, self).__init__(hyper_model_callback_cls)
+    def __init__(self, hyper_model_callback_cls: Type[WebVisHyperModelCallback], log_dir=None,
+                 server_port=8888, exit_web_server_on_finish=False):
+        """
+        Parameters
+        ----------
+        hyper_model_callback_cls: subclass of WebVisHyperModelCallback
+        log_dir : str
+        server_port : str, optional
+        exit_web_server_on_finish : str, optional
+        """
+        super(WebVisExperimentCallback, self).__init__(hyper_model_callback_cls)
         self.log_dir = self._prepare_output_file(log_dir)
         self.server_port = server_port
         self.exit_web_server_on_finish = exit_web_server_on_finish
@@ -82,7 +108,7 @@ class LogEventExperimentCallback(ABSExperimentVisCallback):
 
     def experiment_start(self, exp):
         self.add_exp_log(exp)
-        super(LogEventExperimentCallback, self).experiment_start(exp)
+        super(WebVisExperimentCallback, self).experiment_start(exp)
 
     def experiment_start_(self, exp, experiment_data: ExperimentMeta):
         # logger.info(f"for experiment {id(exp)} add event file {logfile} ")

@@ -1,10 +1,10 @@
 from IPython.display import display
 
 from experiment_notebook_widget import ExperimentProcessWidget
-from hypernets.experiment import ABSExperimentVisCallback, ActionType
+from hypernets.experiment import ABSExpVisExperimentCallback, ActionType
 
 
-class NotebookExperimentCallback(ABSExperimentVisCallback):
+class NotebookExperimentCallback(ABSExpVisExperimentCallback):
 
     _exp_dom_mapping = {}
 
