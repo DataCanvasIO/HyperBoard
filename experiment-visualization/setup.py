@@ -8,11 +8,12 @@ from setuptools import setup
 
 MIN_PYTHON_VERSION = '>=3.6.*'
 
-description = 'Hypernets experiment visualization',
+description = 'Hypernets experiment visualization'
 
 setup(
     name='experiment-visualization',
     version='0.1.0',
+    long_description=description,
     description=description,
     url='https://github.com/DataCanvasIO/HyperBoard',
     author='DataCanvas Community',
