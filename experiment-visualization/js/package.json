@@ -1,5 +1,5 @@
 {
-  "name": "hyperboard",
+  "name": "experiment-visualization",
   "version": "0.1.0",
   "description": "hyperboard",
   "author": "wuhf",
@@ -20,7 +20,7 @@
     "!~"
   ],
   "scripts": {
-    "clean": "rimraf dist/",
+    "clean": "rimraf dist/ && rimraf build/",
     "build:prod": "webpack --mode=production",
     "start": "set PORT=3000 && react-scripts start",
     "build": "react-scripts build",
@@ -34,7 +34,7 @@
     "babel-loader": "8.1.0"
   },
   "dependencies": {
-    "experiment-visualization": "file:../../experiment-visualization",
+    "experiment-visualization-frontend": "file:../../experiment-visualization-frontend",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

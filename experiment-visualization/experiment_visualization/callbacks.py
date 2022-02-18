@@ -12,7 +12,7 @@ from hypernets.utils import logging as hyn_logging
 logger = hyn_logging.getLogger(__name__)
 
 
-def append_event_to_file(event_file, action_type, payload):
+def _append_event_to_file(event_file, action_type, payload):
     event_dict = {
         "type": action_type,
         "payload": payload
@@ -27,16 +27,17 @@ class WebVisHyperModelCallback(ABSExpVisHyperModelCallback):
 
     def __init__(self):
         super(WebVisHyperModelCallback, self).__init__()
-        # TODO: rename to event_file
-        self.log_file = None
+        self.event_file = None
 
     def set_log_file(self, log_file):
-        self.log_file = log_file
+        self.event_file = log_file
 
     def assert_ready(self):
         super(WebVisHyperModelCallback, self).assert_ready()
-        assert self.log_file is not None
+        assert self.event_file is not None
 
+    def send_event(self, action_type, payload):
+        _append_event_to_file(self.event_file, action_type, payload)
 
 
 class WebVisExperimentCallback(ABSExpVisExperimentCallback):
@@ -44,33 +45,32 @@ class WebVisExperimentCallback(ABSExpVisExperimentCallback):
     _log_mapping = {}
     _webapp_mapping = {}
 
-    def __init__(self, hyper_model_callback_cls: Type[WebVisHyperModelCallback], log_dir=None,
+    def __init__(self, hyper_model_callback_cls: Type[WebVisHyperModelCallback], event_file_dir="./events",
                  server_port=8888, exit_web_server_on_finish=False):
         """
         Parameters
         ----------
         hyper_model_callback_cls: subclass of WebVisHyperModelCallback
-        log_dir : str
-        server_port : str, optional
-        exit_web_server_on_finish : str, optional
+        event_file_dir : str, optional, default is "./events"
+            where to store experiment running events log
+        server_port : int, optional, default is 8888
+            http server port.
+        exit_web_server_on_finish : str, optional, default is False
+            whether to exit http server after experiment finished.
         """
         super(WebVisExperimentCallback, self).__init__(hyper_model_callback_cls)
-        self.log_dir = self._prepare_output_file(log_dir)
+        self.event_file_dir = self._prepare_output_file(event_file_dir)
         self.server_port = server_port
         self.exit_web_server_on_finish = exit_web_server_on_finish
 
-    def _prepare_output_file(self, log_dir):
-        if log_dir is None:
-            log_dir = 'log'
+    @staticmethod
+    def _prepare_output_file(event_file_dir):
+        if event_file_dir[-1] == '/':
+            event_file_dir = event_file_dir[:-1]
+        abs_event_file_dir = Path(event_file_dir).absolute().as_posix()
 
-        if log_dir[-1] == '/':
-            log_dir = log_dir[:-1]
-
-        running_dir = f'exp_{datetime.datetime.now().__format__("%m%d-%H%M%S")}'
-        output_path = os.path.expanduser(f'{log_dir}/{running_dir}')
-
-        os.makedirs(output_path, exist_ok=True)
-        return Path(output_path).absolute()
+        os.makedirs(abs_event_file_dir, exist_ok=True)
+        return abs_event_file_dir
 
     def get_log_file(self, exp):
         logfile = self._log_mapping.get(exp)
@@ -78,7 +78,8 @@ class WebVisExperimentCallback(ABSExpVisExperimentCallback):
         return logfile
 
     def add_exp_log(self, exp):
-        logfile_path = Path(self.log_dir) / f"events_{id(exp)}.json"
+        logfile_path = Path(self.event_file_dir) / f"events_{id(exp)}.json"
+        logger.info(f"create experiment event file: {logfile_path}")
         if not logfile_path.parent.exists():
             os.makedirs(logfile_path.parent, exist_ok=True)
         logfile = logfile_path.absolute().as_posix()
@@ -102,9 +103,9 @@ class WebVisExperimentCallback(ABSExpVisExperimentCallback):
         logfile = self.get_log_file(exp)
         callback.set_log_file(logfile)
 
-    def append_event(self, exp,  action_type, payload):
+    def send_event(self, exp, action_type, payload):
         logfile = self.get_log_file(exp)
-        append_event_to_file(logfile, action_type, payload)
+        _append_event_to_file(logfile, action_type, payload)
 
     def experiment_start(self, exp):
         self.add_exp_log(exp)
@@ -119,16 +120,16 @@ class WebVisExperimentCallback(ABSExpVisExperimentCallback):
         self.add_webapp(exp, runner)
         runner.start()
 
-        self.append_event(exp, ActionType.ExperimentStart, experiment_data.to_dict())
+        self.send_event(exp, ActionType.ExperimentStart, experiment_data.to_dict())
 
     def step_start_(self, exp, step_name, d):
-        self.append_event(exp, ActionType.StepStart, d)
+        self.send_event(exp, ActionType.StepStart, d)
 
     def step_break_(self, exp, step, error, payload):
-        self.append_event(exp, ActionType.StepBreak, payload)
+        self.send_event(exp, ActionType.StepBreak, payload)
 
     def step_end_(self, exp, step, output, elapsed, experiment_data):
-        self.append_event(exp, ActionType.StepEnd, experiment_data)
+        self.send_event(exp, ActionType.StepEnd, experiment_data)
 
     def stop_webapp_if_need(self, exp):
         if self.exit_web_server_on_finish:
@@ -140,7 +141,7 @@ class WebVisExperimentCallback(ABSExpVisExperimentCallback):
                 logger.warning(f"runner is None for exp {str(exp)}")
 
     def experiment_end(self, exp, elapsed):
-        self.append_event(exp, ActionType.ExperimentEnd, {})
+        self.send_event(exp, ActionType.ExperimentEnd, {})
         # self.remove_exp_log(exp)
         self.stop_webapp_if_need(exp)
 
