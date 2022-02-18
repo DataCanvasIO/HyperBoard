@@ -141,9 +141,6 @@ workdir/
 dask-worker-space/
 
 # widget
-hyperboard/hyperboard/assets/**
-hyperboard/hyperboard/assets/
-hyperboard/js/yarn.lock
 
 experiment-visualization/js/build
 
