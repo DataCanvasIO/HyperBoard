@@ -23,11 +23,12 @@ def _append_event_to_file(event_file, action_type, payload):
         f.write('\n')
 
 
-class WebVisHyperModelCallback(ABSExpVisHyperModelCallback):
+class WebVisHyperModelCallback(ABSExpVisHyperModelCallback):  # Final class
 
-    def __init__(self):
+    def __init__(self, parse_trial):
         super(WebVisHyperModelCallback, self).__init__()
         self.event_file = None
+        self.parse_trial = parse_trial
 
     def set_log_file(self, log_file):
         self.event_file = log_file
@@ -39,18 +40,27 @@ class WebVisHyperModelCallback(ABSExpVisHyperModelCallback):
     def send_event(self, action_type, payload):
         _append_event_to_file(self.event_file, action_type, payload)
 
+    def on_search_end_(self, hyper_model, early_stopping_data):
+        if early_stopping_data is not None:
+            payload = early_stopping_data.to_dict()
+            self.send_event(ActionType.EarlyStopped, payload)
+
+    def on_trial_end(self, hyper_model, space, trial_no, reward, improved, elapsed):
+        self.assert_ready()
+        trial_event_data = self.parse_trial(hyper_model, space, trial_no, reward,
+                                            improved, elapsed, self.max_trials, self.current_running_step_index)
+        self.send_event(ActionType.TrialEnd, trial_event_data)
+
 
 class WebVisExperimentCallback(ABSExpVisExperimentCallback):
 
     _log_mapping = {}
     _webapp_mapping = {}
 
-    def __init__(self, hyper_model_callback_cls: Type[WebVisHyperModelCallback], event_file_dir="./events",
-                 server_port=8888, exit_web_server_on_finish=False):
+    def __init__(self, event_file_dir="./events", server_port=8888, exit_web_server_on_finish=False):
         """
         Parameters
         ----------
-        hyper_model_callback_cls: subclass of WebVisHyperModelCallback
         event_file_dir : str, optional, default is "./events"
             where to store experiment running events log
         server_port : int, optional, default is 8888
@@ -58,7 +68,7 @@ class WebVisExperimentCallback(ABSExpVisExperimentCallback):
         exit_web_server_on_finish : str, optional, default is False
             whether to exit http server after experiment finished.
         """
-        super(WebVisExperimentCallback, self).__init__(hyper_model_callback_cls)
+        super(WebVisExperimentCallback, self).__init__(WebVisHyperModelCallback)
         self.event_file_dir = self._prepare_output_file(event_file_dir)
         self.server_port = server_port
         self.exit_web_server_on_finish = exit_web_server_on_finish
