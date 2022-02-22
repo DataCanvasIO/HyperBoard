@@ -44,13 +44,34 @@ class TestWebApp(AsyncHTTPTestCase):
         self.assertEqual(index_html, response_text)
 
 
-def test_runner_exit():
+def create_runner():
     logfile = "experiment_visualization_server/tests/events_example.json"
     webapp_ = WebApp(logfile)
     runner = WebAppRunner(webapp_)
+    return runner
+
+
+def test_runner_exit():
+    runner = create_runner()
     runner.start()
     time.sleep(1)  # wait start
     runner.stop()
 
     time.sleep(1)  # wait sleep
     assert not runner.is_alive()
+
+
+def test_attempt_ports():
+    runner1 = create_runner()
+    runner1.start()
+
+    runner2 = create_runner()
+    runner2.start()
+
+    time.sleep(2)
+
+    assert runner1.webapp.server_port_ == 8888
+    assert runner2.webapp.server_port_ == 8889
+
+    runner1.stop()
+    runner2.stop()
