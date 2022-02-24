@@ -52,8 +52,9 @@ class DatasetSummary(widgets.DOMWidget):
 
     value = Dict({}).tag(sync=True, **widget_serialization)
 
-    def __init__(self, data, **kwargs):
+    def __init__(self, exp, **kwargs):
         super(DatasetSummary, self).__init__(**kwargs)
+        data = exp.get_data_character()
         self.value = data
 
 
