@@ -26,7 +26,8 @@ setup(
     zip_safe=False,
     include_package_data=True,
     package_data={
-        'experiment_visualization': ['assets/*', 'assets/static/*'],  # can not inlcude a directory recursion
+        # can not inlcude a directory recursion
+        'experiment_visualization': ['assets/*', 'assets/static/*', 'assets/static/js/*'],
     },
     python_requires=MIN_PYTHON_VERSION,
     classifiers=[

@@ -7,7 +7,7 @@ HyperBoard包括一系列组件为Hypernets提供可视化支持。
 
 这个仓库包含三个项目：
 - [experiment-visualization](./experiment-visualization): 为Hypernets提供基于web的实验可视化功能。
-- [experiment-notebook-widget](./experiment-notebook-widget): Jupyter插件，用来在upyter notebook中可视化Hypernets实验运行过程。
+- [experiment-notebook-widget](./experiment-notebook-widget): Jupyter插件，用来在jupyter notebook中可视化Hypernets实验运行过程。
 - [experiment-visualization-frontend](./experiment-visualization-frontend):  Hypernets实验可视化的前端组件库。
 
 
