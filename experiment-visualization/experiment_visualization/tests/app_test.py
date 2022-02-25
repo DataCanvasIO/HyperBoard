@@ -73,6 +73,4 @@ def test_attempt_ports():
     runner2.stop()
 
     time.sleep(1)
-    assert runner1.webapp.server_port_ == 8888
-    assert runner2.webapp.server_port_ == 8889
-
+    assert runner2.webapp.server_port_ != runner1.webapp.server_port_
