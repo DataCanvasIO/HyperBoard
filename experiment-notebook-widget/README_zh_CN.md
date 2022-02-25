@@ -35,7 +35,7 @@ cd experiment-notebook-widget
 pip install -e .
 ```
 
-## 如何使用插件可视化实验？
+## 使用插件可视化实验
 
 下面将通过一个例子展示如何在Notebook中可视化实验。
 
@@ -97,3 +97,8 @@ display(widget)
 <img width="80%" height="80%" src="docs/images/experiment_process.png"/>
 
 你可以找到这个Notebook在[01.visual_experiment.ipynb](experiment_notebook_widget/examples/01.visual_experiment.ipynb).
+
+
+## 相关项目
+
+目前[HyperGBM](https://github.com/DataCanvasIO/HyperGBM)已经集成此工具，在HyperGBM实验的callback中启动Notebook的可视化插件，并推送可视化事件，请参考文档[通过Notebook使用HyperGBM](https://hypergbm.readthedocs.io/zh_CN/latest/quick_start_notebook.html)。

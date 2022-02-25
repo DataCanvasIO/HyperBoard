@@ -106,5 +106,5 @@ hyperboard server --event-file=experiment-visualization/experiment_visualization
 
 ### 相关项目
 
-目前[HyperGBM]()已经集成此工具，在HyperGBM实验的callback中会将实验的事件写到文件中，并启动Web服务，请参考文档[在HyperGBM中使用Web实验可视化]()。
+目前[HyperGBM](https://github.com/DataCanvasIO/HyperGBM)已经集成此工具，在HyperGBM实验的callback中会将实验的事件写到文件中，并启动Web服务，请参考文档[实验可视化](https://hypergbm.readthedocs.io/zh_CN/latest/example_basic.html#web)。
 
