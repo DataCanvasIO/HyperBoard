@@ -100,4 +100,4 @@ display(widget)
 输出：
 ![](docs/images/experiment_process.png)
 
-你可以找到这个Notebook在[01.visual_experiment.ipynb](experiment-notebook-widget/experiment_notebook_widget/examples/01.visual_experiment.ipynb).
+你可以找到这个Notebook在[01.visual_experiment.ipynb](experiment_notebook_widget/examples/01.visual_experiment.ipynb).
