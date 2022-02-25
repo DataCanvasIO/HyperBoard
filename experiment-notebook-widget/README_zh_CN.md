@@ -70,8 +70,7 @@ experiment_summary_widget = ExperimentSummary(experiment)
 display(experiment_summary_widget)
 ```
 
-输出：
-![](docs/images/experiment_config.png)
+<img width="80%" height="80%" src="docs/images/experiment_config.png"/>
 
 
 
@@ -83,8 +82,7 @@ dataset_summary_widget = DatasetSummary(experiment.get_data_character())
 display(dataset_summary_widget)
 ```
 
-输出：
-![](docs/images/experiment_dataset.png)
+<img width="80%" height="80%" src="docs/images/experiment_dataset.png"/>
 
 
 5. 可视化实验运行过程
@@ -96,8 +94,6 @@ estimator = experiment.run(max_trials=3)
 widget = ExperimentProcessWidget(experiment)
 display(widget)
 ```
-
-输出：
-![](docs/images/experiment_process.png)
+<img width="80%" height="80%" src="docs/images/experiment_process.png"/>
 
 你可以找到这个Notebook在[01.visual_experiment.ipynb](experiment_notebook_widget/examples/01.visual_experiment.ipynb).
