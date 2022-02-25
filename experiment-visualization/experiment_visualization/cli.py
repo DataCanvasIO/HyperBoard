@@ -14,9 +14,6 @@ def main():
 
     args_namespace = parser.parse_args()
 
-    event_file = P.abspath(args_namespace.event_file)
-    server_port = int(args_namespace.port)
-
     def _require_file(path):
         if not P.exists(path):
             raise FileNotFoundError(path)
@@ -24,12 +21,17 @@ def main():
         if not P.isfile(path):
             raise ValueError(f"Path {path} is not a file ")
 
-    _require_file(event_file)
-
-    # start web server with the event file
-    from experiment_visualization import app
-    webapp = app.WebApp(event_file, server_port=server_port)
-    webapp.start()
+    operation = args_namespace.operation
+    if operation == 'server':
+        event_file = P.abspath(args_namespace.event_file)
+        _require_file(event_file)
+        server_port = int(args_namespace.port)
+        # start web server with the event file
+        from experiment_visualization import app
+        webapp = app.WebApp(event_file, server_port=server_port)
+        webapp.start()
+    else:
+        parser.print_usage()
 
 
 if __name__ == '__main__':
