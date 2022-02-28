@@ -21,7 +21,7 @@ setup(
     license='Apache License 2.0',
     install_requires=[
         "tornado",
-        "hypernets"
+        "hypernets==0.2.5"
     ],
     zip_safe=False,
     include_package_data=True,

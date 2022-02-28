@@ -1,2 +1,2 @@
 tornado
-hypernets
+hypernets==0.2.5
