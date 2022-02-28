@@ -1,5 +1,9 @@
 # experiment-notebook-widget
 
+[![Python Versions](https://img.shields.io/pypi/pyversions/experiment-notebook-widget.svg)](https://pypi.org/project/experiment-notebook-widget)
+[![Downloads](https://pepy.tech/badge/experiment-notebook-widget)](https://pepy.tech/project/experiment-notebook-widget)
+[![PyPI Version](https://img.shields.io/pypi/v/experiment-notebook-widget.svg)](https://pypi.org/project/experiment-notebook-widget)
+
 这个jupyter插件用来在jupyter notebook 或者jupyterlab中可视化hypernets实验运行过程:
 
 ## Installation

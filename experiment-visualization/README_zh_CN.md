@@ -1,5 +1,10 @@
 # experiment-visualization
 
+[![Python Versions](https://img.shields.io/pypi/pyversions/experiment-visualization.svg)](https://pypi.org/project/experiment-visualization)
+[![Downloads](https://pepy.tech/badge/experiment-visualization)](https://pepy.tech/project/experiment-visualization)
+[![PyPI Version](https://img.shields.io/pypi/v/experiment-visualization.svg)](https://pypi.org/project/experiment-visualization)
+
+
 这个项目用来为Hypernets提供基于web的实验可视化功能。
 Hypernets实验在运行过程中将运行事件写入到文件中，此项目通过监控这个文件来获取实验运行的状态并进行可视化：
 ![](../docs/images/experiment_process.gif)
