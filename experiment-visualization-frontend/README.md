@@ -1,5 +1,7 @@
 # experiment_visualization_frontend
 
+[中文](README_zh_CN.md)
+
 This project includes the frondend library for experiment visualization, which are used by projects [experiment-visualization](https://github.com/DataCanvasIO/HyperBoard/tree/main/experiment-visualization) and [experiment-notebook-widget](https://github.com/DataCanvasIO/HyperBoard/tree/main/experiment-notebook-widget)
 
 
