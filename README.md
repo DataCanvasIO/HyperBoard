@@ -22,7 +22,7 @@ An example of the experiment information dashboard：
 * [HyperBoard](https://github.com/DataCanvasIO/HyperBoard): A visualization tool for Hypernets.
 * [Cooka](https://github.com/DataCanvasIO/Cooka): Lightweight interactive AutoML system.
 
-![DataCanvas AutoML Toolkit](docs/source/images/DAT2.5.png)
+![DataCanvas AutoML Toolkit](docs/images/DAT2.5.png)
 
 
 ## DataCanvas
