@@ -22,7 +22,7 @@ HyperBoard是专门为Hypernets提供可视化界面而设计的一系列工具�
 * [HyperBoard](https://github.com/DataCanvasIO/HyperBoard): 一个为Hypernets提供可视化界面的工具.
 * [Cooka](https://github.com/DataCanvasIO/Cooka): 一个交互式的轻量级自动机器学习系统.
 
-![DataCanvas AutoML Toolkit](docs/source/images/DAT2.5.png)
+![DataCanvas AutoML Toolkit](docs/images/DAT2.5.png)
 
 
 ## DataCanvas
