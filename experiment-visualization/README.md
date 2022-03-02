@@ -22,7 +22,7 @@ pip install experiment-visualization
 conda install -c conda-forge experiment-visualization
 ```
 
-**Use source code**
+**Install with source code**
 
 Create a frontend project after installing the front-end library [experiment-visualization-frontend](../experiment-visualization-frontend):
 
@@ -41,7 +41,7 @@ Clone the project codes：
 git clone https://github.com/DataCanvasIO/HyperBoard.git
 ```
 
-Creat a new project：
+Creat a project：
 ```shell
 cd HyperBoard/experiment-visualization/js
 
