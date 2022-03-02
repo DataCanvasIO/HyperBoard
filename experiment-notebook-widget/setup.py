@@ -55,7 +55,7 @@ setup_args = dict(
     install_requires=[
         'ipywidgets>=7.6.0',
         'numpy',
-        'hypernets==0.2.5',
+        'hypernets==0.2.5.1',
         'pandas'
     ],
     setup_requires=['jupyter_packaging'],
