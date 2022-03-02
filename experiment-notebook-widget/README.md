@@ -101,7 +101,7 @@ display(widget)
 ```
 <img width="80%" height="80%" src="docs/images/experiment_process.png"/>
 
-Find the project in Notebook [visual_experiment.ipynb](experiment_notebook_widget/examples/01.visual_experiment.ipynb).
+Find the project in Notebook [experiment visualization notebook.ipynb](experiment_notebook_widget/examples/01.visual_experiment.ipynb).
 
 
 ## Related project
