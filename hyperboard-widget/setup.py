@@ -47,11 +47,14 @@ cmdclass['jsdeps'] = combine_commands(
     install_npm(js_dir, npm=['yarn'], build_cmd='build:prod'), ensure_targets(jstargets),
 )
 
+long_description = open('README.md', encoding='utf-8').read()
+
 setup_args = dict(
     name=name,
     version=version,
     description=LONG_DESCRIPTION,
-    long_description=LONG_DESCRIPTION,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     install_requires=[
         'ipywidgets>=7.6.0',
         'numpy',

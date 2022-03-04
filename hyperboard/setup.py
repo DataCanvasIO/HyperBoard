@@ -9,11 +9,12 @@ from setuptools import setup
 MIN_PYTHON_VERSION = '>=3.6.*'
 
 description = 'Hypernets experiment visualization'
-
+long_description = open('README.md', encoding='utf-8').read()
 setup(
     name='hyperboard',
     version='0.1.0',
-    long_description=description,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     description=description,
     url='https://github.com/DataCanvasIO/HyperBoard',
     author='DataCanvas Community',
