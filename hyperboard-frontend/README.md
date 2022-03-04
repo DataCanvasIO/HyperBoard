@@ -1,8 +1,8 @@
-# experiment_visualization_frontend
+# hyperboard-frontend
 
 [中文](README_zh_CN.md)
 
-This project includes the frondend library for experiment visualization, which are used by projects [experiment-visualization](https://github.com/DataCanvasIO/HyperBoard/tree/main/experiment-visualization) and [experiment-notebook-widget](https://github.com/DataCanvasIO/HyperBoard/tree/main/experiment-notebook-widget)
+This project includes the frondend library for experiment visualization, which are used by projects [hyperboard](https://github.com/DataCanvasIO/HyperBoard/tree/main/hyperboard) and [hyperboard-widget](https://github.com/DataCanvasIO/HyperBoard/tree/main/hyperboard-widget)
 
 
 ## Creat a project
@@ -22,7 +22,7 @@ git clone https://github.com/DataCanvasIO/HyperBoard.git
 
 Creat a new project：
 ```
-cd HyperBoard/experiment-visualization-frontend
+cd HyperBoard/hyperboard-frontend
 yarn
 webpack
 ```

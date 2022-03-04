@@ -27,7 +27,7 @@ setup(
     include_package_data=True,
     package_data={
         # can not inlcude a directory recursion
-        'experiment_visualization': ['assets/*', 'assets/static/*', 'assets/static/js/*'],
+        'hyperboard': ['assets/*', 'assets/static/*', 'assets/static/js/*'],
     },
     python_requires=MIN_PYTHON_VERSION,
     classifiers=[
@@ -48,7 +48,7 @@ setup(
     packages=find_packages(exclude=('docs', 'tests*')),
     entry_points={
         'console_scripts': [
-            'hyperboard = experiment_visualization.cli:main',
+            'hyperboard = hyperboard.cli:main',
         ]
     },
 )

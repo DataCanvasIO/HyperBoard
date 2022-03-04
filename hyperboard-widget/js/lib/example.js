@@ -1,7 +1,7 @@
 var widgets = require('@jupyter-widgets/base');
 var _ = require('lodash');
 
-var experimentVisLib = require("experiment-visualization-frontend");
+var experimentVisLib = require("hyperboard-frontend");
 
 var hypernetsExperiment = experimentVisLib.experimentVis;
 
@@ -9,8 +9,8 @@ var ExperimentSummaryModel = widgets.DOMWidgetModel.extend({
     defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
         _model_name : 'ExperimentSummaryModel',
         _view_name : 'ExperimentSummaryView',
-        _model_module : 'experiment_notebook_widget',
-        _view_module : 'experiment_notebook_widget',
+        _model_module : 'hyperboard_widget',
+        _view_module : 'hyperboard_widget',
         _model_module_version : '0.1.0',
         _view_module_version : '0.1.0',
         value : ''
@@ -34,8 +34,8 @@ var DatasetSummaryModel = widgets.DOMWidgetModel.extend({
     defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
         _model_name : 'DatasetSummaryModel',
         _view_name : 'DatasetSummaryView',
-        _model_module : 'experiment_notebook_widget',
-        _view_module : 'experiment_notebook_widget',
+        _model_module : 'hyperboard_widget',
+        _view_module : 'hyperboard_widget',
         _model_module_version : '0.1.0',
         _view_module_version : '0.1.0',
         value : 'Hello World!'
@@ -61,8 +61,8 @@ var ExperimentProcessWidgetModel = widgets.DOMWidgetModel.extend({
     defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
         _model_name : 'ExperimentProcessWidgetModel',
         _view_name : 'ExperimentProcessWidgetView',
-        _model_module : 'experiment_notebook_widget',
-        _view_module : 'experiment_notebook_widget',
+        _model_module : 'hyperboard_widget',
+        _view_module : 'hyperboard_widget',
         _model_module_version : '0.1.0',
         _view_module_version : '0.1.0',
         value : {},

@@ -1,8 +1,8 @@
-# experiment-visualization
+# hyperboard
 
-[![Python Versions](https://img.shields.io/pypi/pyversions/experiment-visualization.svg)](https://pypi.org/project/experiment-visualization)
-[![Downloads](https://pepy.tech/badge/experiment-visualization)](https://pepy.tech/project/experiment-visualization)
-[![PyPI Version](https://img.shields.io/pypi/v/experiment-visualization.svg)](https://pypi.org/project/experiment-visualization)
+[![Python Versions](https://img.shields.io/pypi/pyversions/hyperboard.svg)](https://pypi.org/project/hyperboard)
+[![Downloads](https://pepy.tech/badge/hyperboard)](https://pepy.tech/project/hyperboard)
+[![PyPI Version](https://img.shields.io/pypi/v/hyperboard.svg)](https://pypi.org/project/hyperboard)
 
 
 这个项目用来为Hypernets提供基于web的实验可视化功能。
@@ -23,7 +23,7 @@ conda install -c conda-forge hyperboard
 
 **使用源码**
 
-它依赖前端可视化组件库[experiment-visualization-frontend](../hyperboard-frontend)，开始构建前请先构建此项目。
+它依赖前端可视化组件库[hyperboard-frontend](../hyperboard-frontend)，开始构建前请先构建此项目。
 
 构建所需要的软件环境：
 - [nodejs v14.15.0+](https://nodejs.org/en/)
@@ -45,15 +45,15 @@ cd HyperBoard/hyperboard/js
 # build frontend
 yarn
 yarn build
-rm -rf ../experiment_visualization/assets/
-cp -r build/ ../experiment_visualization/assets/
+rm -rf ../hyperboard/assets/
+cp -r build/ ../hyperboard/assets/
 
 # install 
 cd ..
 python setup.py install
 ``` 
-### 使用experiment-visualization可视化实验
-下面将以一个例子演示experiment-visualization是如何可视化实验的：
+### 使用hyperboard可视化实验
+下面将以一个例子演示hyperboard是如何可视化实验的：
 1. 创建实验可视化数据文件
 ```shell
 touch events.txt
@@ -61,13 +61,13 @@ touch events.txt
 
 2. 创建web服务监控实验可视化数据文件
 ```
-from experiment_visualization.app import WebApp
+from hyperboard.app import WebApp
 webapp = WebApp("events.txt")
 webapp.start()
 ```
 输出日志：
 ```shell
-02-24 20:45:58 I experiment_visualization.app.py 77 - experiment visualization http server is running at: http://0.0.0.0:8888
+02-24 20:45:58 I hyperboard.app.py 77 - experiment visualization http server is running at: http://0.0.0.0:8888
 ```
 此时请打开浏览器访问[http://localhost:8888](http://localhost:8888)。
 
@@ -78,11 +78,11 @@ echo '{"type": "experimentStart", "payload": {"task": "binary", "datasets": [{"k
 ```
 
 然后切换到浏览器中观察实验已经初始化完成。
-Hypernets实验在集成`experiment-visualization`时通过callback将实验的事件写入到文件中，网页端定时进行增量刷新达到动态更新实验运行状态的效果。
+Hypernets实验在集成`hyperboard`时通过callback将实验的事件写入到文件中，网页端定时进行增量刷新达到动态更新实验运行状态的效果。
 
 ### 命令行工具
 
-安装完`experiment-visualization`可以通过hyperboard命令可以加载已经完成的实验的可视化数据：
+安装完`hyperboard`可以通过hyperboard命令可以加载已经完成的实验的可视化数据：
 ```shell
 hyperboard -h
 usage: hyperboard [-h] {server} ...
@@ -105,7 +105,7 @@ git clone https://github.com/DataCanvasIO/HyperBoard.git
 2. 启动web服务并加载数据。
 ```shell
 cd HyperBoard
-hyperboard server --event-file=hyperboard/experiment_visualization/tests/events_example.json
+hyperboard server --event-file=hyperboard/hyperboard/tests/events_example.json
 ```
 在浏览器中访问[http://localhost:8888](http://localhost:8888) 查看实验可视化。
 

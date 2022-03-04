@@ -7,5 +7,5 @@ Package Install
 - [node](http://nodejs.org/)
 
 ```bash
-npm install --save experiment_notebook_widget
+npm install --save hyperboard_widget
 ```

@@ -21,11 +21,11 @@ log.info('setup.py entered')
 log.info('$PATH=%s' % os.environ['PATH'])
 
 name = 'hyperboard-widget'
-pkg_name = 'experiment_notebook_widget'
+pkg_name = 'hyperboard_widget'
 
 LONG_DESCRIPTION = 'Jupyter widgets for hyperntes'
 
-# Get experiment_notebook_widget version
+# Get hyperboard_widget version
 version = get_version(pjoin(pkg_name, '_version.py'))
 
 js_dir = pjoin(here, 'js')
@@ -36,10 +36,10 @@ jstargets = [
 ]
 
 data_files_spec = [
-    ('share/jupyter/nbextensions/experiment_notebook_widget', 'experiment_notebook_widget/nbextension', '*.*'),
-    ('share/jupyter/labextensions/experiment_notebook_widget', 'experiment_notebook_widget/labextension', '**'),
-    ('share/jupyter/labextensions/experiment_notebook_widget', '.', 'install.json'),
-    ('etc/jupyter/nbconfig/notebook.d', '.', 'experiment_notebook_widget.json'),
+    ('share/jupyter/nbextensions/hyperboard_widget', 'hyperboard_widget/nbextension', '*.*'),
+    ('share/jupyter/labextensions/hyperboard_widget', 'hyperboard_widget/labextension', '**'),
+    ('share/jupyter/labextensions/hyperboard_widget', '.', 'install.json'),
+    ('etc/jupyter/nbconfig/notebook.d', '.', 'hyperboard_widget.json'),
 ]
 
 cmdclass = create_cmdclass('jsdeps', data_files_spec=data_files_spec)

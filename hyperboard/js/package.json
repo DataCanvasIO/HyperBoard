@@ -1,5 +1,5 @@
 {
-  "name": "experiment-visualization",
+  "name": "hyperboard",
   "version": "0.1.0",
   "description": "hyperboard",
   "author": "wuhf",
@@ -34,7 +34,7 @@
     "babel-loader": "8.1.0"
   },
   "dependencies": {
-    "experiment-visualization-frontend": "file:../../experiment-visualization-frontend",
+    "hyperboard-frontend": "file:../../hyperboard-frontend",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

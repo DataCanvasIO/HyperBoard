@@ -1,7 +1,7 @@
-# experiment-visualization-frontend
+# hyperboard-frontend
 
 这个项目是hypernets实验可视化的前端组件库。
-它被项目`experiment-visualization`和`experiment-notebook-widget`所使用。
+它被项目`hyperboard`和`hyperboard-widget`所使用。
 
 ## 构建项目
 
@@ -20,7 +20,7 @@ git clone https://github.com/DataCanvasIO/HyperBoard.git
 
 构建项目：
 ```
-cd HyperBoard/experiment-visualization-frontend
+cd HyperBoard/hyperboard-frontend
 yarn
 webpack
 ```

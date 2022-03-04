@@ -1,8 +1,8 @@
-# experiment-notebook-widget
+# hyperboard-widget
 
-[![Python Versions](https://img.shields.io/pypi/pyversions/experiment-notebook-widget.svg)](https://pypi.org/project/experiment-notebook-widget)
-[![Downloads](https://pepy.tech/badge/experiment-notebook-widget)](https://pepy.tech/project/experiment-notebook-widget)
-[![PyPI Version](https://img.shields.io/pypi/v/experiment-notebook-widget.svg)](https://pypi.org/project/experiment-notebook-widget)
+[![Python Versions](https://img.shields.io/pypi/pyversions/hyperboard-widget.svg)](https://pypi.org/project/hyperboard-widget)
+[![Downloads](https://pepy.tech/badge/hyperboard-widget)](https://pepy.tech/project/hyperboard-widget)
+[![PyPI Version](https://img.shields.io/pypi/v/hyperboard-widget.svg)](https://pypi.org/project/hyperboard-widget)
 
 这个jupyter插件用来在jupyter notebook 或者jupyterlab中可视化hypernets实验运行过程:
 
@@ -68,8 +68,9 @@ experiment = make_experiment(PlainModel, df_train,
 ```
 
 3. 可视化实验配置
+
 ```python
-from experiment_notebook_widget import ExperimentSummary
+from hyperboard_widget import ExperimentSummary
 experiment_summary_widget = ExperimentSummary(experiment)
 display(experiment_summary_widget)
 ```
@@ -81,7 +82,7 @@ display(experiment_summary_widget)
 4. 可视化数据集信息
 
 ```python
-from experiment_notebook_widget import DatasetSummary
+from hyperboard_widget import DatasetSummary
 dataset_summary_widget = DatasetSummary(experiment.get_data_character())
 display(dataset_summary_widget)
 ```
@@ -92,7 +93,7 @@ display(dataset_summary_widget)
 5. 可视化实验运行过程
 
 ```python
-from experiment_notebook_widget import ExperimentProcessWidget
+from hyperboard_widget import ExperimentProcessWidget
 estimator = experiment.run(max_trials=3)
 
 widget = ExperimentProcessWidget(experiment)
@@ -100,7 +101,7 @@ display(widget)
 ```
 <img width="80%" height="80%" src="docs/images/experiment_process.png"/>
 
-你可以找到这个Notebook在[01.visual_experiment.ipynb](experiment_notebook_widget/examples/01.visual_experiment.ipynb).
+你可以找到这个Notebook在[01.visual_experiment.ipynb](hyperboard_widget/examples/01.visual_experiment.ipynb).
 
 
 ## 相关项目

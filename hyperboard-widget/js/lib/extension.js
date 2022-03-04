@@ -5,7 +5,7 @@
 // Some static assets may be required by the custom widget javascript. The base
 // url for the notebook is not known at build time and is therefore computed
 // dynamically.
-__webpack_public_path__ = document.querySelector('body').getAttribute('data-base-url') + 'nbextensions/experiment_notebook_widget';
+__webpack_public_path__ = document.querySelector('body').getAttribute('data-base-url') + 'nbextensions/hyperboard_widget';
 
 
 // Configure requirejs
@@ -13,7 +13,7 @@ if (window.require) {
     window.require.config({
         map: {
             "*" : {
-                "experiment_notebook_widget": "nbextensions/experiment_notebook_widget/index",
+                "hyperboard_widget": "nbextensions/hyperboard_widget/index",
             }
         }
     });

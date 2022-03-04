@@ -5940,24 +5940,6 @@ expect@^26.6.0, expect@^26.6.2:
     jest-message-util "^26.6.2"
     jest-regex-util "^26.0.0"
 
-"experiment-visualization-frontend@file:../../experiment-visualization-frontend":
-  version "0.2.1"
-  dependencies:
-    "@testing-library/jest-dom" "^5.11.4"
-    "@testing-library/react" "^11.1.0"
-    "@testing-library/user-event" "^12.1.10"
-    antd "^4.15.3"
-    dva "2.6.0-beta.19"
-    echarts "^5.1.1"
-    http-proxy-middleware "^2.0.1"
-    react "^17.0.2"
-    react-custom-scrollbars "^4.2.1"
-    react-dom "^17.0.2"
-    react-redux "^7.2.4"
-    react-scripts "4.0.3"
-    uuidv4 "^6.2.12"
-    web-vitals "^1.0.1"
-
 express-rate-limit@5.5.1:
   version "5.5.1"
   resolved "https://registry.npmmirror.com/express-rate-limit/-/express-rate-limit-5.5.1.tgz#110c23f6a65dfa96ab468eda95e71697bc6987a2"
@@ -7033,6 +7015,24 @@ human-signals@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmmirror.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
+
+hyperboard-frontend@../../hyperboard-frontend:
+  version "0.1.0"
+  dependencies:
+    "@testing-library/jest-dom" "^5.11.4"
+    "@testing-library/react" "^11.1.0"
+    "@testing-library/user-event" "^12.1.10"
+    antd "^4.15.3"
+    dva "2.6.0-beta.19"
+    echarts "^5.1.1"
+    http-proxy-middleware "^2.0.1"
+    react "^17.0.2"
+    react-custom-scrollbars "^4.2.1"
+    react-dom "^17.0.2"
+    react-redux "^7.2.4"
+    react-scripts "4.0.3"
+    uuidv4 "^6.2.12"
+    web-vitals "^1.0.1"
 
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"

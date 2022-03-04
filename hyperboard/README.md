@@ -1,8 +1,8 @@
-# experiment-visualization
+# hyperboard
 
-[![Python Versions](https://img.shields.io/pypi/pyversions/experiment-visualization.svg)](https://pypi.org/project/experiment-visualization)
-[![Downloads](https://pepy.tech/badge/experiment-visualization)](https://pepy.tech/project/experiment-visualization)
-[![PyPI Version](https://img.shields.io/pypi/v/experiment-visualization.svg)](https://pypi.org/project/experiment-visualization)
+[![Python Versions](https://img.shields.io/pypi/pyversions/hyperboard.svg)](https://pypi.org/project/hyperboard)
+[![Downloads](https://pepy.tech/badge/hyperboard)](https://pepy.tech/project/hyperboard)
+[![PyPI Version](https://img.shields.io/pypi/v/hyperboard.svg)](https://pypi.org/project/hyperboard)
 
 [中文](README_zh_CN.md)
 
@@ -24,7 +24,7 @@ conda install -c conda-forge hyperboard
 
 **Install with source code**
 
-Create a frontend project after installing the front-end library [experiment-visualization-frontend](../hyperboard-frontend):
+Create a frontend project after installing the front-end library [hyperboard-frontend](../hyperboard-frontend):
 
 1. Create the required software environment：
 
@@ -48,17 +48,17 @@ cd HyperBoard/hyperboard/js
 # build frontend
 yarn
 yarn build
-rm -rf ../experiment_visualization/assets/
-cp -r build/ ../experiment_visualization/assets/
+rm -rf ../hyperboard/assets/
+cp -r build/ ../hyperboard/assets/
 
 # install 
 cd ..
 python setup.py install
 ```
 
-## Example of experiment-visualization 
+## Example of hyperboard 
 
-The folllowing steps shows how to implement the experiment-visualization：
+The folllowing steps shows how to implement the hyperboard：
 1. Create an empty event file to store the experiment states
 ```shell
 touch events.txt
@@ -66,13 +66,13 @@ touch events.txt
 
 2. Create a web server to monitor the event file
 ```
-from experiment_visualization.app import WebApp
+from hyperboard.app import WebApp
 webapp = WebApp("events.txt")
 webapp.start()
 ```
 The web server outputs logs as：
 ```shell
-02-24 20:45:58 I experiment_visualization.app.py 77 - experiment visualization http server is running at: http://0.0.0.0:8888
+02-24 20:45:58 I hyperboard.app.py 77 - experiment visualization http server is running at: http://0.0.0.0:8888
 ```
 The web can be accessed via [http://localhost:8888](http://localhost:8888)。
 
@@ -86,7 +86,7 @@ Now the web initialization is finished. The Hypernets experiment writes the even
 
 ## Visualization when the experiment is finished 
 
-Once `experiment-visualization` installed, use the command 'hyperboard' to visualize the finished experiment.
+Once `hyperboard` installed, use the command 'hyperboard' to visualize the finished experiment.
 
 ```shell
 hyperboard -h
@@ -110,10 +110,10 @@ git clone https://github.com/DataCanvasIO/HyperBoard.git
 2. Start the web server and load the experiment data
 ```shell
 cd HyperBoard
-hyperboard server --event-file=hyperboard/experiment_visualization/tests/events_example.json
+hyperboard server --event-file=hyperboard/hyperboard/tests/events_example.json
 ```
 View the experiment dashboard via [http://localhost:8888](http://localhost:8888).
 
 ## Related project
 
-Currently, [HyperGBM](https://github.com/DataCanvasIO/HyperGBM) has integrated this tool. The HyperGBM experiment could callback the web visualization function and display the experiment dashboard. Please refer to [Experiment Visualization](https://hypergbm.readthedocs.io/en/latest/example_basic.html#experiment-visualization)。
+Currently, [HyperGBM](https://github.com/DataCanvasIO/HyperGBM) has integrated this tool. The HyperGBM experiment could callback the web visualization function and display the experiment dashboard. Please refer to [Experiment Visualization](https://hypergbm.readthedocs.io/en/latest/example_basic.html#hyperboard)。

@@ -1,8 +1,8 @@
-# experiment-notebook-widget
+# hyperboard-widget
 
-[![Python Versions](https://img.shields.io/pypi/pyversions/experiment-notebook-widget.svg)](https://pypi.org/project/experiment-notebook-widget)
-[![Downloads](https://pepy.tech/badge/experiment-notebook-widget)](https://pepy.tech/project/experiment-notebook-widget)
-[![PyPI Version](https://img.shields.io/pypi/v/experiment-notebook-widget.svg)](https://pypi.org/project/experiment-notebook-widget)
+[![Python Versions](https://img.shields.io/pypi/pyversions/hyperboard-widget.svg)](https://pypi.org/project/hyperboard-widget)
+[![Downloads](https://pepy.tech/badge/hyperboard-widget)](https://pepy.tech/project/hyperboard-widget)
+[![PyPI Version](https://img.shields.io/pypi/v/hyperboard-widget.svg)](https://pypi.org/project/hyperboard-widget)
 
 [中文](README_zh_CN.md)
 
@@ -69,8 +69,9 @@ experiment = make_experiment(PlainModel, df_train,
 ```
 
 3. Experiment visualization configurations
+
 ```python
-from experiment_notebook_widget import ExperimentSummary
+from hyperboard_widget import ExperimentSummary
 experiment_summary_widget = ExperimentSummary(experiment)
 display(experiment_summary_widget)
 ```
@@ -82,7 +83,7 @@ display(experiment_summary_widget)
 4. Visualize the dataset information
 
 ```python
-from experiment_notebook_widget import DatasetSummary
+from hyperboard_widget import DatasetSummary
 dataset_summary_widget = DatasetSummary(experiment.get_data_character())
 display(dataset_summary_widget)
 ```
@@ -93,7 +94,7 @@ display(dataset_summary_widget)
 5. Visualize the experiment process
 
 ```python
-from experiment_notebook_widget import ExperimentProcessWidget
+from hyperboard_widget import ExperimentProcessWidget
 estimator = experiment.run(max_trials=3)
 
 widget = ExperimentProcessWidget(experiment)
@@ -101,7 +102,7 @@ display(widget)
 ```
 <img width="80%" height="80%" src="docs/images/experiment_process.png"/>
 
-Find the project in Notebook [experiment visualization notebook.ipynb](experiment_notebook_widget/examples/01.visual_experiment.ipynb).
+Find the project in Notebook [experiment visualization notebook.ipynb](hyperboard_widget/examples/01.visual_experiment.ipynb).
 
 
 ## Related project

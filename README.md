@@ -5,9 +5,9 @@
 HyperBoard is a visualization tool designed for Hypernets.
 
 HyperBoard contains three projects which are listed below：
-- [experiment-visualization](./hyperboard): provides a visualization tool for experiment information based on the web.
-- [experiment-notebook-widget](./hyperboard-widget): provides a visualization tool for experiment information based on jupyter notebook widget.
-- [experiment-visualization-frontend](./hyperboard-frontend): provides a frontend visualization library for Hypernets.
+- [hyperboard](./hyperboard): provides a visualization tool for experiment information based on the web.
+- [hyperboard-widget](./hyperboard-widget): provides a visualization tool for experiment information based on jupyter notebook widget.
+- [hyperboard-frontend](./hyperboard-frontend): provides a frontend visualization library for Hypernets.
 
 An example of the experiment information dashboard：
 ![experiment_process.gif](docs/images/experiment_process.gif)

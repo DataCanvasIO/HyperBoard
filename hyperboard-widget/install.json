@@ -1,5 +1,5 @@
 {
   "packageManager": "python",
-  "packageName": "experiment_notebook_widget",
-  "uninstallInstructions": "Use your Python package manager (pip, conda, etc.) to uninstall the package experiment_notebook_widget"
+  "packageName": "hyperboard_widget",
+  "uninstallInstructions": "Use your Python package manager (pip, conda, etc.) to uninstall the package hyperboard_widget"
 }

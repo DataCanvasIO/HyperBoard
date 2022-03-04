@@ -22,7 +22,7 @@ module.exports = (env, argv) => {
             entry: './lib/extension.js',
             output: {
                 filename: 'extension.js',
-                path: path.resolve(__dirname, '..', 'experiment_notebook_widget', 'nbextension'),
+                path: path.resolve(__dirname, '..', 'hyperboard_widget', 'nbextension'),
                 libraryTarget: 'amd',
                 publicPath: '' // publicPath is set in extension.js
             },
@@ -37,7 +37,7 @@ module.exports = (env, argv) => {
             entry: './lib/index.js',
             output: {
                 filename: 'index.js',
-                path: path.resolve(__dirname, '..', 'experiment_notebook_widget', 'nbextension'),
+                path: path.resolve(__dirname, '..', 'hyperboard_widget', 'nbextension'),
                 libraryTarget: 'amd',
                 publicPath: '',
             },
@@ -47,7 +47,7 @@ module.exports = (env, argv) => {
             },
             externals: ['@jupyter-widgets/base']
         },
-        {// Embeddable experiment_notebook_widget bundle
+        {// Embeddable hyperboard_widget bundle
         //
         // This bundle is generally almost identical to the notebook bundle
         // containing the custom widget views and models.
@@ -66,7 +66,7 @@ module.exports = (env, argv) => {
                 filename: 'index.js',
                 path: path.resolve(__dirname, 'dist'),
                 libraryTarget: 'amd',
-                publicPath: 'https://unpkg.com/experiment_notebook_widget@' + version + '/dist/'
+                publicPath: 'https://unpkg.com/hyperboard_widget@' + version + '/dist/'
             },
             devtool,
             module: {
