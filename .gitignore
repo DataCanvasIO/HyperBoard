@@ -142,7 +142,7 @@ dask-worker-space/
 
 # widget
 
-experiment-visualization/js/build
+hyperboard/js/build
 
 # js
 **/node_modules

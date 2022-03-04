@@ -20,7 +20,7 @@ log.set_verbosity(log.DEBUG)
 log.info('setup.py entered')
 log.info('$PATH=%s' % os.environ['PATH'])
 
-name = 'experiment-notebook-widget'
+name = 'hyperboard-widget'
 pkg_name = 'experiment_notebook_widget'
 
 LONG_DESCRIPTION = 'Jupyter widgets for hyperntes'

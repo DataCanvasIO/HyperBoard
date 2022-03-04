@@ -5,9 +5,9 @@
 HyperBoard是专门为Hypernets提供可视化界面而设计的一系列工具组件。 
 
 以下具体描述了HyperBoard的三个项目：
-- [experiment-visualization](./experiment-visualization): 为Hypernets提供基于web的实验可视化功能。
-- [experiment-notebook-widget](./experiment-notebook-widget): 在jupyter notebook中提供对Hypernets实验运行过程的可视化功能。
-- [experiment-visualization-frontend](./experiment-visualization-frontend): Hypernets实验可视化的前端组件库。
+- [experiment-visualization](./hyperboard): 为Hypernets提供基于web的实验可视化功能。
+- [experiment-notebook-widget](./hyperboard-widget): 在jupyter notebook中提供对Hypernets实验运行过程的可视化功能。
+- [experiment-visualization-frontend](./hyperboard-frontend): Hypernets实验可视化的前端组件库。
 
 实验运行的可视化演示：
 ![experiment_process.gif](docs/images/experiment_process.gif)

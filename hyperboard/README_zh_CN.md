@@ -4,46 +4,43 @@
 [![Downloads](https://pepy.tech/badge/experiment-visualization)](https://pepy.tech/project/experiment-visualization)
 [![PyPI Version](https://img.shields.io/pypi/v/experiment-visualization.svg)](https://pypi.org/project/experiment-visualization)
 
-[中文](README_zh_CN.md)
 
-This project provides a web based visualization tool for experiment information. In general, Hypernets writes the experiment events into a text file. This tool could monitor the file and make these events visible.
-
+这个项目用来为Hypernets提供基于web的实验可视化功能。
+Hypernets实验在运行过程中将运行事件写入到文件中，此项目通过监控这个文件来获取实验运行的状态并进行可视化：
 ![](../docs/images/experiment_process.gif)
 
-## Installation
+### 安装
 
-**Install with pip**
+**使用pip安装**
 ```shell
-pip install experiment-visualization
+pip install hyperboard
 ```
 
-**Install with conda**
+**使用conda安装**
 ```shell
-conda install -c conda-forge experiment-visualization
+conda install -c conda-forge hyperboard
 ```
 
-**Install with source code**
+**使用源码**
 
-Create a frontend project after installing the front-end library [experiment-visualization-frontend](../experiment-visualization-frontend):
+它依赖前端可视化组件库[experiment-visualization-frontend](../hyperboard-frontend)，开始构建前请先构建此项目。
 
-1. Create the required software environment：
-
+构建所需要的软件环境：
 - [nodejs v14.15.0+](https://nodejs.org/en/)
 
-2. Besides, this project requires the package manager ``yarn`` and the module bundler ``webpack``. Install them by the following command:
-
+这个项目的前端部分使用yarn管理依赖、webpack构建，安装这两个工具：
 ```
 npm install -g webpack webpack-cli yarn
 ```
 
-Clone the project codes：
+克隆代码：
 ```shell
 git clone https://github.com/DataCanvasIO/HyperBoard.git
 ```
 
-Creat a project：
+构建并安装项目：
 ```shell
-cd HyperBoard/experiment-visualization/js
+cd HyperBoard/hyperboard/js
 
 # build frontend
 yarn
@@ -54,40 +51,38 @@ cp -r build/ ../experiment_visualization/assets/
 # install 
 cd ..
 python setup.py install
-```
-
-## Example of experiment-visualization 
-
-The folllowing steps shows how to implement the experiment-visualization：
-1. Create an empty event file to store the experiment states
+``` 
+### 使用experiment-visualization可视化实验
+下面将以一个例子演示experiment-visualization是如何可视化实验的：
+1. 创建实验可视化数据文件
 ```shell
 touch events.txt
 ```
 
-2. Create a web server to monitor the event file
+2. 创建web服务监控实验可视化数据文件
 ```
 from experiment_visualization.app import WebApp
 webapp = WebApp("events.txt")
 webapp.start()
 ```
-The web server outputs logs as：
+输出日志：
 ```shell
 02-24 20:45:58 I experiment_visualization.app.py 77 - experiment visualization http server is running at: http://0.0.0.0:8888
 ```
-The web can be accessed via [http://localhost:8888](http://localhost:8888)。
+此时请打开浏览器访问[http://localhost:8888](http://localhost:8888)。
 
-3. Add detailed experiment events to the file 'event.txt' by command:
+3. 通过命令向`events.txt`文件中追加样例实验事件
 
 ```shell
 echo '{"type": "experimentStart", "payload": {"task": "binary", "datasets": [{"kind": "Train", "task": "binary", "shape": [904, 17], "memory": 123072}], "steps": [{"index": 0, "name": "data_clean", "type": "DataCleanStep", "status": "wait", "configuration": {"cv": true, "data_cleaner_args": {"nan_chars": null, "correct_object_dtype": true, "drop_constant_columns": true, "drop_label_nan_rows": true, "drop_idness_columns": true, "drop_columns": null, "reserve_columns": null, "drop_duplicated_columns": false, "reduce_mem_usage": false, "int_convert_to": "float"}, "name": "data_clean", "train_test_split_strategy": null}, "extension": {}, "start_datetime": null, "end_datetime": null}, {"index": 1, "name": "space_searching", "type": "SpaceSearchStep", "status": "wait", "configuration": {"cv": true, "name": "space_searching", "num_folds": 3, "earlyStopping": {"enable": true, "exceptedReward": null, "maxNoImprovedTrials": 10, "timeLimit": 3600, "mode": "max"}}, "extension": {}, "start_datetime": null, "end_datetime": null}, {"index": 2, "name": "final_ensemble", "type": "EnsembleStep", "status": "wait", "configuration": {"ensemble_size": 20, "name": "final_ensemble", "scorer": "make_scorer(accuracy_score)"}, "extension": {}, "start_datetime": null, "end_datetime": null}], "evaluation_metric": null, "confusion_matrix": null, "resource_usage": null, "prediction_stats": null}}' >> events.txt
 ```
 
-Now the web initialization is finished. The Hypernets experiment writes the events by callback. The web will update the lastest experiment states automatically.
+然后切换到浏览器中观察实验已经初始化完成。
+Hypernets实验在集成`experiment-visualization`时通过callback将实验的事件写入到文件中，网页端定时进行增量刷新达到动态更新实验运行状态的效果。
 
-## Visualization when the experiment is finished 
+### 命令行工具
 
-Once `experiment-visualization` installed, use the command 'hyperboard' to visualize the finished experiment.
-
+安装完`experiment-visualization`可以通过hyperboard命令可以加载已经完成的实验的可视化数据：
 ```shell
 hyperboard -h
 usage: hyperboard [-h] {server} ...
@@ -102,18 +97,19 @@ optional arguments:
   -h, --help  show this help message and exit
 ```
 
- See example below:
-1. Clone the codes
+以加载示例实验数据为例子：
+1. 克隆代码
 ```shell
 git clone https://github.com/DataCanvasIO/HyperBoard.git
 ```
-2. Start the web server and load the experiment data
+2. 启动web服务并加载数据。
 ```shell
 cd HyperBoard
-hyperboard server --event-file=experiment-visualization/experiment_visualization/tests/events_example.json
+hyperboard server --event-file=hyperboard/experiment_visualization/tests/events_example.json
 ```
-View the experiment dashboard via [http://localhost:8888](http://localhost:8888).
+在浏览器中访问[http://localhost:8888](http://localhost:8888) 查看实验可视化。
 
-## Related project
+### 相关项目
 
-Currently, [HyperGBM](https://github.com/DataCanvasIO/HyperGBM) has integrated this tool. The HyperGBM experiment could callback the web visualization function and display the experiment dashboard. Please refer to [Experiment Visualization](https://hypergbm.readthedocs.io/en/latest/example_basic.html#experiment-visualization)。
+目前[HyperGBM](https://github.com/DataCanvasIO/HyperGBM)已经集成此工具，在HyperGBM实验的callback中会将实验的事件写到文件中，并启动Web服务，请参考文档[实验可视化](https://hypergbm.readthedocs.io/zh_CN/latest/example_basic.html#web)。
+

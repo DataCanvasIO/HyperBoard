@@ -4,23 +4,25 @@
 [![Downloads](https://pepy.tech/badge/experiment-notebook-widget)](https://pepy.tech/project/experiment-notebook-widget)
 [![PyPI Version](https://img.shields.io/pypi/v/experiment-notebook-widget.svg)](https://pypi.org/project/experiment-notebook-widget)
 
-这个jupyter插件用来在jupyter notebook 或者jupyterlab中可视化hypernets实验运行过程:
+[中文](README_zh_CN.md)
+
+This project provides a visualization tool for experiment information based on jupyter notebook/ jupyterlab widget.
 
 ## Installation
 
-**使用pip安装**
+**Install with pip**
 ```shell
-pip install experiment-notebook-widget
+pip install hyperboard-widget
 ```
 
-**使用conda安装**
+**Install with conda**
 ```shell
-conda install -c conda-forge experiment-notebook-widget
+conda install -c conda-forge hyperboard-widget
 ```
 
-**使用源码构建安装**
+**Install with source code**
 
-构建所需要的软件环境：
+1. Create the required software environment：
 - [python 3.7+](https://python.org)
 - [nodejs v14.15.0+](https://nodejs.org/en/)
 - [pip 20.0.2+](https://pypi.org/project/pip/)
@@ -28,23 +30,22 @@ conda install -c conda-forge experiment-notebook-widget
 - [jupyter-notebook 6.4+](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html)
 
 
-准备好安装环境后克隆源码:
+2. Clone the soure code:
 ```bash
 git clone https://github.com/DataCanvasIO/HyperBoard.git
 ```
 
-安装项目：
+3. Create a project：
 ```bash
-cd experiment-notebook-widget
+cd hyperboard-widget
 pip install -e .
 ```
 
-## 使用插件可视化实验
+## Example 
 
-下面将通过一个例子展示如何在Notebook中可视化实验。
+The folllowing steps shows how to implement the experiment visualization in notebook
 
-
-1. 导入模块：
+1. Import the required modules：
 ```python
 import warnings
 warnings.filterwarnings('ignore')
@@ -55,7 +56,7 @@ from hypernets.experiment import make_experiment
 from hypernets.tabular.datasets import dsutils
 ```
 
-2. 构建实验
+2. Create an experiment
 ```python
 df = dsutils.load_boston()
 df_train, df_eval = train_test_split(df, test_size=0.2)
@@ -67,7 +68,7 @@ experiment = make_experiment(PlainModel, df_train,
                              search_callbacks=[])
 ```
 
-3. 可视化实验配置
+3. Experiment visualization configurations
 ```python
 from experiment_notebook_widget import ExperimentSummary
 experiment_summary_widget = ExperimentSummary(experiment)
@@ -78,7 +79,7 @@ display(experiment_summary_widget)
 
 
 
-4. 可视化数据集信息
+4. Visualize the dataset information
 
 ```python
 from experiment_notebook_widget import DatasetSummary
@@ -89,7 +90,7 @@ display(dataset_summary_widget)
 <img width="80%" height="80%" src="docs/images/experiment_dataset.png"/>
 
 
-5. 可视化实验运行过程
+5. Visualize the experiment process
 
 ```python
 from experiment_notebook_widget import ExperimentProcessWidget
@@ -100,9 +101,11 @@ display(widget)
 ```
 <img width="80%" height="80%" src="docs/images/experiment_process.png"/>
 
-你可以找到这个Notebook在[01.visual_experiment.ipynb](experiment_notebook_widget/examples/01.visual_experiment.ipynb).
+Find the project in Notebook [experiment visualization notebook.ipynb](experiment_notebook_widget/examples/01.visual_experiment.ipynb).
 
 
-## 相关项目
+## Related project
 
-目前[HyperGBM](https://github.com/DataCanvasIO/HyperGBM)已经集成此工具，在HyperGBM实验的callback中启动Notebook的可视化插件，并推送可视化事件，请参考文档[通过Notebook使用HyperGBM](https://hypergbm.readthedocs.io/zh_CN/latest/quick_start_notebook.html)。
+Currently, [HyperGBM](https://github.com/DataCanvasIO/HyperGBM) has integrated this tool. The HyperGBM experiment could call the notebook widget visualization function and display the experiment dashboard. Please refer to [HyperGBM: Experiment Visualization in Notebook](https://hypergbm.readthedocs.io/en/latest/quick_start_notebook.html)
+
+
