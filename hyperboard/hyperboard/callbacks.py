@@ -42,7 +42,10 @@ class WebVisHyperModelCallback(ABSExpVisHyperModelCallback):  # Final class
 
     def on_search_end_(self, hyper_model, early_stopping_data):
         if early_stopping_data is not None:
-            payload = early_stopping_data.to_dict()
+            payload = {
+                'stepIndex': self.current_running_step_index,
+                'data': early_stopping_data.to_dict()
+            }
             self.send_event(ActionType.EarlyStopped, payload)
 
     def on_trial_end(self, hyper_model, space, trial_no, reward, improved, elapsed):
