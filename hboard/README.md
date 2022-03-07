@@ -56,9 +56,9 @@ cd ..
 python setup.py install
 ```
 
-## Example of hyperboard 
+## Example of hboard 
 
-The folllowing steps shows how to implement the hyperboard：
+The folllowing steps shows how to implement the hboard：
 1. Create an empty event file to store the experiment states
 ```shell
 touch events.txt
@@ -86,13 +86,13 @@ Now the web initialization is finished. The Hypernets experiment writes the even
 
 ## Visualization when the experiment is finished 
 
-Once `hyperboard` installed, use the command 'hyperboard' to visualize the finished experiment.
+Once `hboard` installed, use the command 'hboard' to visualize the finished experiment.
 
 ```shell
-hyperboard -h
-usage: hyperboard [-h] {server} ...
+hboard -h
+usage: hboard [-h] {server} ...
 
-hyperboard command is used to visualize the experiment
+hboard command is used to visualize the experiment
 
 positional arguments:
   {server}
@@ -110,7 +110,7 @@ git clone https://github.com/DataCanvasIO/HyperBoard.git
 2. Start the web server and load the experiment data
 ```shell
 cd HyperBoard
-hyperboard server --event-file=hboard/hboard/tests/events_example.json
+hboard server --event-file=hboard/hboard/tests/events_example.json
 ```
 View the experiment dashboard via [http://localhost:8888](http://localhost:8888).
 

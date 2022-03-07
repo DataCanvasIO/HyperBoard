@@ -49,7 +49,7 @@ setup(
     packages=find_packages(exclude=('docs', 'tests*')),
     entry_points={
         'console_scripts': [
-            'hyperboard = hboard.cli:main',
+            'hboard = hboard.cli:main',
         ]
     },
 )
