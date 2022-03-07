@@ -37,7 +37,7 @@ git clone https://github.com/DataCanvasIO/HyperBoard.git
 
 3. Create a project：
 ```bash
-cd HyperBoard-widget
+cd HyperBoard/hboard-widget
 pip install -e .
 ```
 
