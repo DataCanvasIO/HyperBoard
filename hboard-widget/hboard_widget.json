@@ -1,0 +1,5 @@
+{
+  "load_extensions": {
+    "hboard_widget/extension": true
+  }
+}
