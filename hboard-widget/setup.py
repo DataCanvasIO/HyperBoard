@@ -57,9 +57,7 @@ setup_args = dict(
     long_description_content_type="text/markdown",
     install_requires=[
         'ipywidgets>=7.6.0',
-        'numpy',
         'hypernets>=0.2.5.1,<0.2.6',
-        'pandas'
     ],
     setup_requires=['jupyter-packaging'],
     packages=find_packages(),
