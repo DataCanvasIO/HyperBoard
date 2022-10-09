@@ -56,7 +56,7 @@ setup_args = dict(
     long_description=long_description,
     long_description_content_type="text/markdown",
     install_requires=[
-        'ipywidgets>=7.6.0',
+        'ipywidgets>=7,<9',
         'hypernets>=0.2.5.1,<0.2.6',
     ],
     setup_requires=['jupyter-packaging'],

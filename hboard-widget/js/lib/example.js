@@ -5,75 +5,90 @@ var experimentVisLib = require("hboard-frontend");
 
 var hypernetsExperiment = experimentVisLib.experimentVis;
 
-var ExperimentSummaryModel = widgets.DOMWidgetModel.extend({
-    defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
-        _model_name : 'ExperimentSummaryModel',
-        _view_name : 'ExperimentSummaryView',
-        _model_module : 'hboard_widget',
-        _view_module : 'hboard_widget',
-        _model_module_version : '0.1.0',
-        _view_module_version : '0.1.0',
-        value : ''
-    })
-});
 
+export const OUTPUT_WIDGET_VERSION = '0.1.0';
+
+export class ExperimentSummaryModel extends widgets.DOMWidgetModel {
+  defaults() {
+    return {
+      ...super.defaults(),
+      _model_name : 'ExperimentSummaryModel',
+      _view_name : 'ExperimentSummaryView',
+      _model_module : 'hboard_widget',
+      _view_module : 'hboard_widget',
+      _model_module_version : OUTPUT_WIDGET_VERSION,
+      _view_module_version : OUTPUT_WIDGET_VERSION,
+      value : ''
+    };
+  }
+}
 
 // Custom View. Renders the widget model.
-var ExperimentSummaryView = widgets.DOMWidgetView.extend({
+export class ExperimentSummaryView extends widgets.DOMWidgetView{
+
     // Defines how the widget gets rendered into the DOM
-    render: function() {
+    render() {
         // this.value_changed();
         console.log('hypernetsExperiment lib in renderExperimentSummary: ');
         console.log(hypernetsExperiment);
         const value = this.model.get('value');
         hypernetsExperiment.renderExperimentSummary(value, this.el);
     }
-});
 
-var DatasetSummaryModel = widgets.DOMWidgetModel.extend({
-    defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
-        _model_name : 'DatasetSummaryModel',
+}
+
+export class DatasetSummaryModel extends widgets.DOMWidgetModel{
+
+    defaults() {
+    return {
+      ...super.defaults(),
+      _model_name : 'DatasetSummaryModel',
         _view_name : 'DatasetSummaryView',
         _model_module : 'hboard_widget',
         _view_module : 'hboard_widget',
         _model_module_version : '0.1.0',
         _view_module_version : '0.1.0',
         value : 'Hello World!'
-    })
-});
+    };
+  }
+}
 
 
 // Custom View. Renders the widget model.
-var DatasetSummaryView = widgets.DOMWidgetView.extend({
+export class DatasetSummaryView extends widgets.DOMWidgetView{
     // Defines how the widget gets rendered into the DOM
-    render: function() {
+    render() {
         // this.value_changed();
-        console.log('hypernetsExperiment lib in renderDatasetSummary updated2: ');
+        console.log('hypernetsExperiment lib in renderDatasetSummary updated');
         console.log(hypernetsExperiment);
         console.log(this.el);
         const value = this.model.get('value');
         hypernetsExperiment.renderDatasetSummary(value, this.el);
     }
-});
+}
 
 
-var ExperimentProcessWidgetModel = widgets.DOMWidgetModel.extend({
-    defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
-        _model_name : 'ExperimentProcessWidgetModel',
-        _view_name : 'ExperimentProcessWidgetView',
-        _model_module : 'hboard_widget',
-        _view_module : 'hboard_widget',
-        _model_module_version : '0.1.0',
-        _view_module_version : '0.1.0',
-        value : {},
-        initData : '',
-    })
-});
+export class ExperimentProcessWidgetModel extends widgets.DOMWidgetModel {
+    defaults() {
+        return {
+          ...super.defaults(),
+          _model_name : 'ExperimentProcessWidgetModel',
+           _view_name : 'ExperimentProcessWidgetView',
+            _model_module : 'hboard_widget',
+            _view_module : 'hboard_widget',
+            _model_module_version : '0.1.0',
+            _view_module_version : '0.1.0',
+            value : {},
+            initData : '',
+        };
+  }
+}
 
-var ExperimentProcessWidgetView = widgets.DOMWidgetView.extend({
-    reactStore: null,
+export class ExperimentProcessWidgetView extends widgets.DOMWidgetView{
+    reactStore = null;
+
     // Defines how the widget gets rendered into the DOM
-    render: function() {
+    render() {
         console.log('experimentVisLib lib: ');
         console.log(experimentVisLib);
         console.log('hypernetsExperiment lib: ');
@@ -98,9 +113,9 @@ var ExperimentProcessWidgetView = widgets.DOMWidgetView.extend({
             hypernetsExperiment.renderLossState(this.el);
             console.error("Received init_data is null ");
         }
-    },
+    };
 
-    value_changed: function() {
+    value_changed() {
         // this.el.textContent = this.model.get('value');
         const value = this.model.get('value');
         //        console.log("Received value_changed from backend: ");  // print this value already in react project
@@ -120,14 +135,4 @@ var ExperimentProcessWidgetView = widgets.DOMWidgetView.extend({
             console.warn("state store is null, please check is the widget initialize succeed");
         }
     }
-});
-
-
-module.exports = {
-    ExperimentSummaryModel: ExperimentSummaryModel,
-    ExperimentSummaryView: ExperimentSummaryView,
-    DatasetSummaryModel: DatasetSummaryModel,
-    DatasetSummaryView: DatasetSummaryView,
-    ExperimentProcessWidgetModel: ExperimentProcessWidgetModel,
-    ExperimentProcessWidgetView: ExperimentProcessWidgetView
-};
+}

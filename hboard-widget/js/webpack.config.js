@@ -61,18 +61,19 @@ module.exports = (env, argv) => {
         // The target bundle is always `dist/index.js`, which is the path required
         // by the custom widget embedder.
         //
-            entry: './lib/embed.js',
+            entry: ['./amd-public-path.js', './lib/index.js'],
             output: {
                 filename: 'index.js',
                 path: path.resolve(__dirname, 'dist'),
                 libraryTarget: 'amd',
-                publicPath: 'https://unpkg.com/hboard_widget@' + version + '/dist/'
+                // publicPath: 'https://unpkg.com/hboard_widget@' + version + '/dist/'
+                publicPath: '', // Set in amd-public-path.js
             },
             devtool,
             module: {
                 rules: rules
             },
-            externals: ['@jupyter-widgets/base']
+            externals: ['@jupyter-widgets/base', 'module']
         }
     ];
 }

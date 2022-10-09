@@ -37,7 +37,17 @@ git clone https://github.com/DataCanvasIO/HyperBoard.git
 ```bash
 cd hboard-widget
 pip install -e .
+jupyter nbextension install --py --symlink --overwrite --sys-prefix hboard_widget
+jupyter nbextension enable --py --sys-prefix hboard_widget
+jupyter labextension develop --overwrite hboard_widget
 ```
+
+如果JS代码发生变更则重新编译：
+```shell
+$ cd js
+$ yarn run build
+```
+
 
 ## 使用插件可视化实验
 

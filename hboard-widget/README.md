@@ -39,6 +39,15 @@ git clone https://github.com/DataCanvasIO/HyperBoard.git
 ```bash
 cd HyperBoard/hboard-widget
 pip install -e .
+jupyter nbextension install --py --symlink --overwrite --sys-prefix hboard_widget
+jupyter nbextension enable --py --sys-prefix hboard_widget
+jupyter labextension develop --overwrite hboard_widget
+```
+
+Then you need to rebuild the JS when you make a code change:
+```shell
+$ cd js
+$ yarn run build
 ```
 
 ## Example 
