@@ -43,7 +43,7 @@ git clone https://github.com/DataCanvasIO/HyperBoard.git
 
 Creat a project：
 ```shell
-cd HyperBoard/hboard/js
+cd hboard/js
 
 # build frontend
 yarn
