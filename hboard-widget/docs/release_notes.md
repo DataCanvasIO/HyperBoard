@@ -1,6 +1,6 @@
 ## Release notes
 
-Version 0.2.5.6
+Version 0.1.1
 =====================
 
 **hboard-widget**
