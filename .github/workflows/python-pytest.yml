@@ -28,6 +28,21 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 14
+
+    - name: Build frontend
+      run: |
+        npm install yarn -g 
+        cd ./hboard
+        yarn
+        yarn build
+        rm -rf ../hboard/assets/
+        cp -r build/ ../hboard/assets/
+        ls -l ../hboard/assets/
+
     - name: Install dependencies
       run: |
         cd ./hboard
