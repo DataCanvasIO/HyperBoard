@@ -36,12 +36,12 @@ Create a frontend project after installing the front-end library [hboard-fronten
 npm install -g webpack webpack-cli yarn
 ```
 
-Clone the project codes：
+Clone the project codes:
 ```shell
 git clone https://github.com/DataCanvasIO/HyperBoard.git
 ```
 
-Creat a project：
+Build the project:
 ```shell
 cd hboard/js
 

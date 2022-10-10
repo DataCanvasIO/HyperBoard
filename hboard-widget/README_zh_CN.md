@@ -27,6 +27,7 @@ conda install -c conda-forge hboard-widget
 - [jupyterlab 2.0.0+ ](https://jupyter.org/)
 - [jupyter-notebook 6.4+](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html)
 
+*需要 [hboard](../hboard) 前端部分提前构建好才能构建此项目。*
 
 准备好安装环境后克隆源码:
 ```bash

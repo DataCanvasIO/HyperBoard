@@ -27,7 +27,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     package_data={
-        # can not inlcude a directory recursion
+        # can not include a directory recursion
         'hboard': ['assets/*', 'assets/static/*', 'assets/static/js/*'],
     },
     python_requires=MIN_PYTHON_VERSION,

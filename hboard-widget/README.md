@@ -22,37 +22,37 @@ conda install -c conda-forge hboard-widget
 
 **Install with source code**
 
-1. Create the required software environment：
+Build from source code need following requirements:
 - [python 3.7+](https://python.org)
 - [nodejs v14.15.0+](https://nodejs.org/en/)
 - [pip 20.0.2+](https://pypi.org/project/pip/)
 - [jupyterlab 2.0.0+ ](https://jupyter.org/)
-- [jupyter-notebook 6.4+](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html)
 
+*The project need frontend of [hboard](../hboard) to be built in advance.*
 
-2. Clone the soure code:
+Clone the source code:
 ```bash
 git clone https://github.com/DataCanvasIO/HyperBoard.git
 ```
 
-3. Create a project：
+Build for development:
 ```bash
-cd HyperBoard/hboard-widget
+cd ./hboard-widget
 pip install -e .
 jupyter nbextension install --py --symlink --overwrite --sys-prefix hboard_widget
 jupyter nbextension enable --py --sys-prefix hboard_widget
 jupyter labextension develop --overwrite hboard_widget
 ```
 
-Then you need to rebuild the JS when you make a code change:
+You need to rebuild the JS when you make a code change:
 ```shell
-$ cd js
-$ yarn run build
+cd ./hboard-widget/js
+yarn run build
 ```
 
 ## Example 
 
-The folllowing steps shows how to implement the experiment visualization in notebook
+The following steps shows how to implement the experiment visualization in notebook
 
 1. Import the required modules：
 ```python
