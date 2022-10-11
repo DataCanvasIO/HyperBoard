@@ -12,7 +12,7 @@ description = 'Hypernets experiment visualization'
 long_description = open('README.md', encoding='utf-8').read()
 setup(
     name='hboard',
-    version='0.1.0',
+    version='0.1.1',
     long_description=long_description,
     long_description_content_type="text/markdown",
     description=description,
