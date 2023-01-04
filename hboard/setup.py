@@ -6,7 +6,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 
-MIN_PYTHON_VERSION = '>=3.6.*'
+MIN_PYTHON_VERSION = '>=3.7.*'
 
 description = 'Hypernets experiment visualization'
 long_description = open('README.md', encoding='utf-8').read()
@@ -37,7 +37,6 @@ setup(
         'Intended Audience :: Education',
         'Intended Audience :: Science/Research',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Topic :: Scientific/Engineering',
