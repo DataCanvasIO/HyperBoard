@@ -10,7 +10,7 @@ HyperBoard contains three projects which are listed below：
 - [hboard-frontend](./hboard-frontend): provides a frontend visualization library for Hypernets.
 
 An example of the experiment information dashboard：
-![experiment_process.gif](docs/images/experiment_process.gif)
+![experiment_process.gif](https://raw.githubusercontent.com/DataCanvasIO/HyperBoard/main/docs/images/experiment_process.gif)
 
 ## HyperBoard related projects
  
@@ -21,7 +21,7 @@ An example of the experiment information dashboard：
 * [HyperKeras](https://github.com/DataCanvasIO/HyperKeras): An AutoDL tool for Neural Architecture Search and Hyperparameter Optimization on Tensorflow and Keras.
 * [Cooka](https://github.com/DataCanvasIO/Cooka): Lightweight interactive AutoML system.
 
-![DataCanvas AutoML Toolkit](docs/images/DAT2.5.png)
+![DataCanvas AutoML Toolkit](https://raw.githubusercontent.com/DataCanvasIO/HyperBoard/main/docs/images/DAT2.5.png)
 
 
 ## DataCanvas
