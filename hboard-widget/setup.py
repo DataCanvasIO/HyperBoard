@@ -34,7 +34,6 @@ js_dir = pjoin(here, 'js')
 jstargets = [
     pjoin(js_dir, 'dist', 'index.js'),
 ]
-MIN_PYTHON_VERSION = '>=3.7.*'
 data_files_spec = [
     ('share/jupyter/nbextensions/hboard_widget', 'hboard_widget/nbextension', '*.*'),
     ('share/jupyter/labextensions/hboard_widget', 'hboard_widget/labextension', '**'),
@@ -61,7 +60,7 @@ setup_args = dict(
     ],
     setup_requires=['jupyter-packaging'],
     packages=find_packages(),
-    python_requires=MIN_PYTHON_VERSION,
+    python_requires='>=3.7',
     zip_safe=False,
     cmdclass=cmdclass,
     author='wuhf',
